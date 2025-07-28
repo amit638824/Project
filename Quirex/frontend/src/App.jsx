@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.js';
+import 'bootstrap/dist/js/bootstrap.bundle.js'; 
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TopNavbar from './components/landingComponents/TopNavbar';

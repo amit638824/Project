@@ -1,1 +1,68 @@
-  
+.slider{
+    height: 450px;
+}
+.sliderdiv{
+    padding-top: 100px;
+    padding-left:60px;
+    color: white;
+}
+.sliderp{
+    border-left:2px solid black;
+    padding-left: 10px;
+}
+.sliderimg{
+    height:450px;
+}
+.divcounter{
+    height: 200px;
+}
+.countericon{
+padding-top:30px;
+font-size: 30px;
+text-align: center;
+}
+.text-mycolor{
+    color:#E65100;
+}
+.services{
+    min-height:250px;
+}
+.property{
+    min-height: 300px;
+}
+.featuredp{
+    color:grey;
+}
+.featureddiv{
+    border-right:1px solid grey;
+}
+.featuredimg{
+    height:220px;
+}
+.cardic{
+    height:80px;
+    width: 80px;
+    text-align: center;
+    font-size:35px;
+    line-height: 60px;
+    margin:0px auto;
+    border-radius: 50%;
+    background: #FFCCBC;
+    padding:5px;
+}
+.boxbtn{
+    position:relative;
+}
+.cardbtn{
+    height:50px;
+    width:50px;
+    border:1px solid grey;
+    border-radius: 50%;
+    position: absolute;
+    bottom:-30px;
+    font-size:22px;
+    line-height: 40px;
+    background: white;
+    text-align: center;
+    left:100px;
+}

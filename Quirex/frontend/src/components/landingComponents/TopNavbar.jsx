@@ -2,9 +2,7 @@ import React from 'react'
 
 const TopNavbar = () => {
   return (
-    <div>
-      TopNavbar
-    </div>
+     <div></div>
   )
 }
 

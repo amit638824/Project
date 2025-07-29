@@ -4,8 +4,7 @@ import Counter from './Counter';
 import Services from './Services';
 import Property from './Property';
 import OurAnimities from './OurAnimities';
-import Testimonial from './Testimonial';
-import Footer from './Footer'
+import Testimonial from './Testimonial'; 
 const Home = () => {
   return (
     <>
@@ -14,8 +13,7 @@ const Home = () => {
       <Services />
       <Property />
       <OurAnimities />
-      <Testimonial />
-      <Footer />
+      <Testimonial /> 
     </>
   )
 }

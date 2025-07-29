@@ -9,6 +9,7 @@ import About from './components/landingComponents/About';
 import Services from './components/landingComponents/Services';
 import Property from './components/landingComponents/Property';
 import UserRegister from './components/landingComponents/UserRegister';
+import Footer from './components/landingComponents/Footer'
 import Login from './components/landingComponents/Login';
 import AddProperty from './components/AdminComponents/AddProperty';
 import AdminPropertyList from './components/AdminComponents/AdminPropertyList';
@@ -50,6 +51,7 @@ function App() {
           <Route path='/user-logout' element={<UserLogOut/>} />
         </Routes>
       </BrowserRouter>
+     <Footer/>
     </>
   )
 }

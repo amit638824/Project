@@ -98,7 +98,7 @@ const schema = yup
     password: yup.string().required().min(8).max(16),
   })
 
-const SignIn = () => {
+const Login=()=>{
   const navigate = useNavigate()
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
@@ -136,9 +136,10 @@ const SignIn = () => {
 
    return (
     <>
-      <Navbar/>
-    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
-      <div className="card p-4 shadow" style={{ width: "500px" }}>
+    Login <br />
+     {/* <Navbar/>*/}
+    <div className="d-flex justify-content-center align-items-center vh-50 " style={{backgroundColor:"#F0F2FA",width:"70%",marginLeft:"230px",height:"400px"}}>
+      <div className="card p-4 shadow " style={{ width: "400px",height:"350px" }}> 
         <h3 className="text-center mb-4">
           <span className="text-danger fw-bold">Login</span>
         </h3>
@@ -166,7 +167,7 @@ const SignIn = () => {
             {errors.password && <p className='text-danger'>{errors.password?.message}</p>}
           </div>
 
-          <input type="submit" className="btn btn-danger w-40" value="Login" />
+          <input type="submit" className="btn btn-danger w-80" value="Login" style={{marginLeft:"130px"}} />
 
         </form>
       </div>
@@ -175,7 +176,7 @@ const SignIn = () => {
   )
 }
 
-export default SignIn 
+export default Login
 
 
 

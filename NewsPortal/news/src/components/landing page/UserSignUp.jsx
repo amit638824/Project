@@ -1,11 +1,9 @@
 import React from 'react'
-
 function UserSignUp() {
   return (
-   <>
-   UserSignUp
-   </>
+    <>
+      UserSignUp
+    </>
   )
 }
-
 export default UserSignUp

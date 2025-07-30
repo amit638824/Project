@@ -5,10 +5,7 @@ const YourNews = () => {
    <>
     <Navbar/>
    YourNews
-
-   
    </>
   )
 }
-
 export default YourNews

@@ -1,13 +1,9 @@
 import React from 'react'
-
 const ImageGallery = () => {
   return (
-   <>
-
-ImageGallery <br />
-   
-   </>
+    <>
+      ImageGallery <br />
+    </>
   )
 }
-
 export default ImageGallery

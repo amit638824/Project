@@ -1,60 +1,52 @@
-import React from 'react'
+{/*import React from 'react'
 import Navbar from '../landing page/Navbar'
-
-
-const PostNews = () => {
+{/*const PostNews = () => {
   return (
     <>
-    <Navbar/>
-      <div className="container-fluid postnewsBox">
-        <div className='border-2 postnewsContainer rounded shadow-sm' style={{ backgroundColor: "#fff" }}>
-          <h3 className='text-dark fw-bold mb-0'>Post <span style={{ color: "maroon" }}>News</span></h3>
-          <hr className='w-25 bg-success mb-3 mt-2' />
+      <Navbar />
+      {/*<div className="container-fluid border border-danger postnewsBox ">
+        <div className=" postnewsContainer rounded shadow-lg p-4 " >
+          <h3 className='text-dark fw-bold'>Post<span >News</span></h3>
+          <div className='row-mb-3'>
+            <label htmlFor="title" className=' col-sm-2 col-form-label'>Title</label>
+            <div className='col-sm-10'>
+            <input type="text" id='title' name='title' placeholder='Enter news title' className='Form-control'></input>
+          </div>
+          </div>
+          <br />
+          <div className='row-mb-3'>
+            <label htmlFor="Description" className='form-label'>Description</label>
+            <input type="text" id='Description' name='description' placeholder='Enter news  description' className='Form-control' style={{ height: "90px", width: "80%" }}></input>
+          </div>
+          <br />
 
-          <form action="">
-            <div className='mb-2'>
-              <label htmlFor="title" className='form-label fw-bold'>Title</label>
-              <input type="text" id='title' name='title' placeholder='Enter your title' className='form-control' />
-            </div>
+          <div className='row-mb-3'>
+            <label htmlFor="ImageLink" className='form-label'>ImageLink</label>
+            <input type="text" id='ImageLink' name='ImageLink' placeholder='Enter news ImageLink ' className='Form-control'></input>
+          </div>
+          <br />
+          <div className='row-mb-3'>
+            <label htmlFor="Category" className='form-label'>Category</label>
+            <input type="text" id='Category' name='Category' placeholder='Enter news  Category ' className='Form-control'></input>
+          </div>
 
-            <div className='mb-2'>
-              <label htmlFor="description" className='form-label fw-bold'>Description</label>
-              <input type="text" id='description' name='description' placeholder='Enter your description' className='form-control' />
-            </div>
-
-            <div className='mb-2'>
-              <label htmlFor="mediaType" className='form-label fw-bold'>Media Type</label>
-              <select name="mediaType" id="mediaType" className='form-select'>
-                <option value="">Select media type</option>
-                <option value="image">Image</option>
-                <option value="video">Video</option>
-              </select>
-            </div>
-
-            <div className='mb-2'>
-              <label htmlFor="mediaUrl" className='form-label fw-bold'>Media Url</label>
-              <input type="text" id='mediaUrl' name='mediaUrl' placeholder='Enter your media URL' className='form-control' />
-            </div>
-
-            <div className='mb-2'>
-              <label htmlFor="category" className='form-label fw-bold'>Category</label>
-              <select name="category" id="category" className='form-select'>
-                <option value="">Category</option>
-                <option value="crime">Crime</option>
-                <option value="politics">Politics</option>
-                <option value="sports">Sports</option>
-                <option value="health">Health</option>
-              </select>
-            </div>
-
-            <p className='text-center'>
-              <button className='btn text-light rounded mt-2 fw-bold' style={{ backgroundColor: "maroon" }}>
-                Post News
-              </button>
-            </p>
-          </form>
         </div>
-      </div>
+
+      </div >
+
+    </>
+  )
+}
+
+export default PostNews */}
+
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from '../landing page/Navbar';
+const PostNews = () => {
+  return ( <>
+ {/*<Navbar/>  */}
+ 
     </>
   );
 };

@@ -1,12 +1,8 @@
 import React from 'react'
-
 const ContactUs = () => {
   return (<>
-  
-  ContactUs  <br />
-  
+    ContactUs  <br />
   </>
   )
 }
-
 export default ContactUs

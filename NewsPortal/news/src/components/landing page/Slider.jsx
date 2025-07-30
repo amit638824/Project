@@ -1,108 +1,123 @@
 import React from 'react'
-
-
 import { IoNewspaperSharp } from "react-icons/io5";
-
-
-function Slid(){
-    return(<>
-    <div className='Slid'>
-        <div className='slid1' >
-
-
-
-
-
-
-<div id="carouselExampleCaptions" className="carousel slide">
-  <div className="carousel-indicators">
-   <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button> 
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button> 
-  </div>
+function Slid() {
+  return (<>
+ 
+ <div className='row slider'>
+  <div className='col-sm-8 p-0'>
+    <div id="carouselExample" className="carousel slide" data-bs-ride='carousel'>
   <div className="carousel-inner">
-    <div className="carousel-item active">
-      <img src="images/news slider.jpg" className="d-block w-100" alt="..."/>
-      <div className="carousel-caption d-none d-md-block">
-        <h5></h5>
-        <p></p>
-      </div>
+    <div className="carousel-item active" data-bs-interval='100'>
+      <img src="/images/news slider2.jpg" className="d-block w-100 img-fluid sliderimg" alt="..." />
     </div>
     <div className="carousel-item">
-      <img src="images/news slider2.jpg" className="d-block w-100" alt="..."/>
-      <div className="carousel-caption d-none d-md-block">
-        
-      </div>
+      <img src="/images/news slider3.jpg" className="d-block w-100 img-fluid sliderimg" alt="..." />
     </div>
     <div className="carousel-item">
-      <img src="images/news slider3.jpg" className="d-block w-100" alt="..."/>
-      <div className="carousel-caption d-none d-md-block">
-      
-      </div>
+      <img src="/images/news slider.jpg" className="d-block w-100 img-fluid sliderimg" alt="..." />
     </div>
   </div>
-  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+  <button
+    className="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExample"
+    data-bs-slide="prev"
+  >
+    <span className="carousel-control-prev-icon" aria-hidden="true" />
     <span className="visually-hidden">Previous</span>
   </button>
-  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+  <button
+    className="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExample"
+    data-bs-slide="next"
+  >
+    <span className="carousel-control-next-icon" aria-hidden="true" />
     <span className="visually-hidden">Next</span>
   </button>
 </div>
 
-
-
-
-
-
-        </div>
-        <div className='slid2'>
-            <div className='s1'>Top  10 News <b style={{color:"#7F0000"}}>Headline  <IoNewspaperSharp /></b></div>
-            <div className='s2'> 
-                <div className='sl3'></div>
-                <div className='sl4'>Lorem ipsum ::dolor sit amet 
-                     adipisicing elit. 
-                      nditiis asperior
-                    andae..!! 
-                    <br />
-                    
-                   <button className='form-button1'>view more</button>
-                   <br />
-                   Date:sep9,2024.
-                    </div>
-
-
-
-            </div>
-            <div className='s3'>
-                <div className='sl5'></div>
-                <div className='sl6'>
-               Lorem ipsum ::dolor sit amet 
-                     adipisicing elit. 
-                      nditiis asperior
-                    andae..!! 
-                    <br />
-                    
-                   <button className='form-button1'>view more</button>
-                   <br />
-                   Date:sep9,2024.
-
-                </div>
-            </div>
-           
-        </div>
+  </div>
+  <div className='col-sm-4 headmarquee'>
+    <h3 className='text-center bg-light'>Top 10 News <b className='text-mycolor'>Headline</b></h3>
+    <marquee direction="up" className='headline' behavior="alternate">
+      <div className="card mb-3 mx-auto shadow-lg border border-0">
+  <div className="row g-0">
+    <div className="col-md-4">
+      <img src="/images/headline1.jpg" className="img-fluid rounded-start headlineimg" alt="..." />
     </div>
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-    </>)
+    <div className="col-md-8">
+      <div className="card-body p-1">
+        <p className="card-text m-0">
+          <b>This is a wider card with supporting text below as a natural lead.</b>
+        </p>
+        <p className='m-0'><a className='btn bg-mycolor text-light p-1'>View More </a></p>
+        <p className="card-text">
+          <small className="text-body-secondary">Last updated 3 mins ago</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <div className="card mb-3 mx-auto shadow-lg border border-0">
+  <div className="row g-0">
+    <div className="col-md-4">
+      <img src="/images/headline1.jpg" className="img-fluid rounded-start headlineimg" alt="..." />
+    </div>
+    <div className="col-md-8">
+      <div className="card-body p-1">
+        <p className="card-text m-0">
+          <b>This is a wider card with supporting text below as a natural lead.</b>
+        </p>
+        <p className='m-0'><a className='btn bg-mycolor text-light p-1'>View More </a></p>
+        <p className="card-text">
+          <small className="text-body-secondary">Last updated 3 mins ago</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+ <div className="card mb-3 mx-auto shadow-lg border border-0">
+  <div className="row g-0">
+    <div className="col-md-4">
+      <img src="/images/headline1.jpg" className="img-fluid rounded-start headlineimg" alt="..." />
+    </div>
+    <div className="col-md-8">
+      <div className="card-body p-1">
+        <p className="card-text m-0">
+          <b>This is a wider card with supporting text below as a natural lead.</b>
+        </p>
+        <p className='m-0'><a className='btn bg-mycolor text-light p-1'>View More </a></p>
+        <p className="card-text">
+          <small className="text-body-secondary">Last updated 3 mins ago</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+ <div className="card mb-3 mx-auto shadow-lg border border-0">
+  <div className="row g-0">
+    <div className="col-md-4">
+      <img src="/images/headline1.jpg" className="img-fluid rounded-start headlineimg" alt="..." />
+    </div>
+    <div className="col-md-8">
+      <div className="card-body p-1">
+        <p className="card-text m-0">
+          <b>This is a wider card with supporting text below as a natural lead.</b>
+        </p>
+        <p className='m-0'><a className='btn bg-mycolor text-light p-1'>View More </a></p>
+        <p className="card-text">
+          <small className="text-body-secondary">Last updated 3 mins ago</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+    </marquee>
+  </div>
+ </div>
+
+  </>)
 }
 export default Slid;

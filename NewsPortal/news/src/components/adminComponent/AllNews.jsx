@@ -3,12 +3,9 @@ import Navbar from '../landing page/Navbar'
 const AllNews = () => {
   return ( 
     <>
-     <Navbar/>
-    AllNews
-
-    
-    </>
+    <Navbar/>
+   AllNews
+     </>
   )
 }
-
 export default AllNews

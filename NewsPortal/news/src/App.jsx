@@ -13,7 +13,7 @@ import NewsDetails from './components/landing page/NewsDetails';
 import ImageGallery from './components/landing page/ImageGallery';
 import ContactUs from './components/landing page/ContactUs';
 import UserSignUp from './components/landing page/UserSignUp';
-import SignIn from './components/landing page/SignIn';
+import Login from './components/landing page/Login';
 import EditProfile from './components/adminComponent/EditProfile';
 import AllNews from './components/adminComponent/AllNews';
 import AdminContactUsList from './components/adminComponent/AdminContactUsList'; 
@@ -21,14 +21,12 @@ import UserEditProfile from './components/userComponent/UserEditProfile';
 import PostNews from './components/userComponent/PostNews';
 import YourNews from './components/userComponent/YourNews';
 import UserAllNewsList from './components/userComponent/UserAllNewsList'; 
-
-
 function App() {
   return (<>
     <BrowserRouter>
-      {/* <TopNavbar />
-      <LogoSec /> */}
-      {/* <Navbar />   */}
+       <TopNavbar/>
+      <LogoSec /> 
+      <Navbar />  
       <Routes>
         {/*landing navbar*/}
         <Route path='/' element={<Home />} />
@@ -38,7 +36,7 @@ function App() {
         <Route path='/gallery' element={<ImageGallery />} />
         <Route path='/contact' element={<ContactUs />} /> 
         <Route path='/UserSignUp' element={<UserSignUp />} />
-        <Route path='/login' element={<SignIn />} />
+        <Route path='/login' element={<Login/>} />
 
         {/*admin route*/}
         <Route path='/admin-profile' element={<EditProfile />} />

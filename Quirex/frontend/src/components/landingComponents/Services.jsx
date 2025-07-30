@@ -1,11 +1,14 @@
 //services
 import React from "react";
 
-
-
+import NavBar from "./NavBar";
+import { useLocation } from "react-router-dom";
 const Services = () => {
+ const location=useLocation(); 
+ 
   return (
     <>
+    {location?.pathname!="/" &&   <NavBar/>}
     <div  className="row py-5 bg servicesh">
       <div className="text-center ">
       <div className="tagline ">Our Services </div>

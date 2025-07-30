@@ -27,7 +27,7 @@ function App() {
     <>
       <BrowserRouter>
         <TopNavbar />
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           {/* landing page router */}
           <Route path='/' element={<Home />} />
@@ -42,13 +42,11 @@ function App() {
           <Route path='/admin-sold' element={<AdminSoldProperty />} />
           <Route path='/admin-user' element={<UserList />} />
           <Route path='/admin-profile' element={<AdminProfile />} />
-          <Route path='/admin-contact' element={<AdminContactUsList />} />
-          <Route path='/admin-logout' element={<AdminLogout />} />
+          <Route path='/admin-contact' element={<AdminContactUsList />} /> 
           {/* User Route */}
           <Route path='/user-property' element={<Property />} />
           <Route path='/user-bought' element={<UserBoughtList/>} />
-          <Route path='/user-profile' element={<UserProfile/>} />
-          <Route path='/user-logout' element={<UserLogOut/>} />
+          <Route path='/user-profile' element={<UserProfile/>} /> 
         </Routes>
       </BrowserRouter>
      <Footer/>

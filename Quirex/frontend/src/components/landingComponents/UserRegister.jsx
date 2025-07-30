@@ -4,10 +4,11 @@ import { FaEnvelope } from "react-icons/fa";
 import { IoMdCall } from "react-icons/io";
 import { FaKey } from "react-icons/fa";
 import { MdAddPhotoAlternate } from "react-icons/md";
-
+import NavBar from './NavBar';
 const UserRegister = () => {
   return (
     <> 
+      <NavBar/>
       <div className="container my-5">
         <h2 className="text-center">Register Here</h2>
         <div className="row justify-content-center">

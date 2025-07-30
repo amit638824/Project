@@ -6,7 +6,7 @@ import { FaLocationDot, FaFacebookF } from "react-icons/fa6";
 const TopNavbar = () => {
   return (
    <>
-    <div className="row mycolor">
+    <div className="row mycolor sticky-top">
           <div className="col-sm-6 py-1 mycolor">
             <div className="row">
               <div className="col-6 py-1 text-end">

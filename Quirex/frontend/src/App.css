@@ -1,3 +1,6 @@
+ body{
+  overflow-x: hidden !important;
+ }
  .topbar {
    height: 30px;
  }

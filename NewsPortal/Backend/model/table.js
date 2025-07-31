@@ -20,6 +20,7 @@ const NewsSchema=new mongoose.Schema({
    url:{type:String},
    desc:{type:String},
    userId:{type:String}, 
+   isApproved:{type:Boolean,default:false},
    createAt:{type:Date,default:Date.now()},
    updateAt:{type:Date,default:Date.now()},
 })

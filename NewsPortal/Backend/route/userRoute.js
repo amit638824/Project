@@ -94,5 +94,64 @@ router.post('/add-news', async (req, res) => {
       })
    }
 })
+router.get("/user-your-news", async (req, res) => {
+   try {
+      const { userId } = req.query;
+      const result = await newsModel.find({ userId }).sort({ createAt: -1 });
+      res.json({
+         code: 200,
+         message: "Data fetched succeessfully..",
+         data: result
+      })
+   } catch (err) {
+      res.json({
+         code: 500,
+         message: "Internal Server Error",
+         data: ""
+      })
+   }
+})
 
+router.get("/admin-all-list", async (req, res) => {
+   try {
+      const result = await newsModel.find().sort({ createAt: -1 });
+      res.json({
+         code: 200,
+         message: "Data fetched succeessfully..",
+         data: result
+      })
+   } catch (err) {
+      res.json({
+         code: 500,
+         message: "Internal Server Error",
+         data: ""
+      })
+   }
+})
+
+router.put("/admin-news-approved", async (req, res) => {
+   try {
+      const { _id, isApproved } = req.body;
+      const result = await newsModel.findByIdAndUpdate({ _id }, { isApproved }, { new: true });
+     if(result){
+       res.json({
+         code: 200,
+         message: "Updated succeessfully..",
+         data: result
+      })
+     }else{
+        res.json({
+         code: 400,
+         message: "Updated Failed.",
+         data: result
+      })
+     }
+   } catch (err) {
+      res.json({
+         code: 500,
+         message: "Internal Server Error",
+         data: ""
+      })
+   }
+})
 export default router;

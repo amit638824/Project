@@ -7,8 +7,21 @@ const userSchema=new mongoose.Schema({
    address:{type:String},
    profile:{type:String},
    userType:{type:String,default:'user'},
-   createAt:{type:Date,default:Date.now},
-   updateAt:{type:Date,default:Date.now},
+   createAt:{type:Date,default:Date.now()},
+   updateAt:{type:Date,default:Date.now()},
 })
 
 export const userModel=mongoose.model('users',userSchema);
+
+const NewsSchema=new mongoose.Schema({
+   title:{type:String},
+   category:{type:String}, 
+   type:{type:String},
+   url:{type:String},
+   desc:{type:String},
+   userId:{type:String}, 
+   createAt:{type:Date,default:Date.now()},
+   updateAt:{type:Date,default:Date.now()},
+})
+ 
+export const newsModel=mongoose.model('news',NewsSchema);

@@ -1,7 +1,14 @@
 import React from 'react'
 import { LuNewspaper } from "react-icons/lu";
+import Navbar from './Navbar';
+import   {useLocation} from 'react-router-dom';
+
 function NewsDetails() {
-    return (<>
+ const location=useLocation()
+  return (
+    <>
+    {location?.pathname!=="/" &&  <Navbar/>}
+      
        <div className='row py-2 bg-light'>
         <p className='fs-3 text-center'>News <b className='text-mycolor'>Details</b></p>
         <div className='col-sm-10 mx-auto'>

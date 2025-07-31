@@ -1,5 +1,5 @@
 import express from 'express';
-import { userModel } from '../model/table.js';
+import { userModel, newsModel } from '../model/table.js';
 
 const router = express.Router();
 
@@ -66,5 +66,33 @@ router.post('/login', async (req, res) => {
       });
    }
 });
+
+router.post('/add-news', async (req, res) => {
+   try {
+      const { title, category, type, url, desc, userId } = req.body;
+      const isExist = await newsModel.findOne({ title });
+      if (isExist) {
+         res.json({
+            code: 400,
+            message: "Title Already Exist.",
+            data: isExist
+         })
+      } else {
+         const data = new newsModel({ title, category, type, url, desc, userId });
+         const result = await data.save();
+         res.json({
+            code: 200,
+            message: "News Added Successfully.",
+            data: result
+         })
+      }
+   } catch (err) {
+      res.json({
+         code: 500,
+         message: "Internal Server Error",
+         data: ""
+      })
+   }
+})
 
 export default router;

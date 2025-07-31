@@ -3,7 +3,16 @@
   width: 100%;
   background-color: whitesmoke;
 }
+.headingText{
+  color: #7F0000;
+}
 
+.themeBtn{
+  background-color: #7F0000;
+}
+.themeBtn:hover{
+  background-color: #7F0000;
+}
 .NewsDet2 {
   height: 300px;
   width: 80%;
@@ -37,7 +46,7 @@
 .TopNav {
   background-color: #7F0000;
   color: white;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   height: 35px;
   width: 100%;
 }

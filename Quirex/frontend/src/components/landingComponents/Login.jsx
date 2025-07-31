@@ -45,6 +45,7 @@ const Login = () => {
   return (
     <>
       <NavBar/>
+      
       <div className="container my-5">
         <h2 className="login-title">Login Here</h2>
         <div className="login-box">

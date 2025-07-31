@@ -25,8 +25,7 @@ function App() {
   return (<>
     <BrowserRouter>
        <TopNavbar/>
-      <LogoSec /> 
-      <Navbar />  
+      <LogoSec />  
       <Routes>
         {/*landing navbar*/}
         <Route path='/' element={<Home />} />

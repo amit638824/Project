@@ -136,8 +136,8 @@ const Login=()=>{
 
    return (
     <>
-    Login <br />
-     {/* <Navbar/>*/}
+ 
+     <Navbar/>
     <div className="d-flex justify-content-center align-items-center vh-50 " style={{backgroundColor:"#F0F2FA",width:"70%",marginLeft:"230px",height:"400px"}}>
       <div className="card p-4 shadow " style={{ width: "400px",height:"350px" }}> 
         <h3 className="text-center mb-4">

@@ -182,8 +182,8 @@ if(userInfo?.userType=="user"){
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/registration">
-                  <MdOutlineAppRegistration />  Registration
+                <Link className="nav-link" to="/UserSignUp">
+                  <MdOutlineAppRegistration />  UserSignUp
                 </Link>
               </li>
 

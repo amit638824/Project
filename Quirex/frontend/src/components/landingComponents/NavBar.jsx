@@ -29,7 +29,6 @@ const NavBar = () => {
               <li className="nav-item"><Link className="nav-link text-dark fw-bold" to="/admin-list">List</Link></li>
               <li className="nav-item"><Link className="nav-link text-dark fw-bold" to="/admin-sold">Sold</Link></li>
               <li className="nav-item"><Link className="nav-link text-dark fw-bold" to="/admin-user">User</Link></li>
-
               <li className="nav-item"><Link className="nav-link text-dark fw-bold" to="/admin-profile">Profile</Link></li>
               <li className="nav-item"><Link className="nav-link text-dark fw-bold" to="/admin-contact">Contact</Link></li>
             </ul>

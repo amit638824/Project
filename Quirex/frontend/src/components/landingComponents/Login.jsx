@@ -54,7 +54,6 @@ const Login = () => {
               <div className="input-group">
                 <span className="input-group-text"><FaEnvelope /></span>
                 <input type="email" {...register('email')} className="form-control" placeholder="Enter your email" />
-
               </div>
               {errors?.email && <p className='text-danger'>{errors?.email?.message}</p>}
             </div>

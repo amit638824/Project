@@ -6,11 +6,13 @@ adminRoute.post('/add-property', async (req, res) => {
         const { title, price, area, description, location } = req.body;
         const { pic } = req.files;
           pic.mv("uploads/" + pic?.name, (err) => {
-                res.json({
+                if(err){
+                    res.json({
                     code: 400,
                     message: "Error in File Upload.",
                     data: ''
                 })
+                }
             })
         const isExist = await propertyModel.findOne({ title });
         if (isExist) {

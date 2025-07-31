@@ -128,6 +128,7 @@
  }
 
  /* property */
+
  .property {
    min-height: 300px;
  }
@@ -145,6 +146,7 @@
  }
 
  /* Animities */
+
  .cardic {
    height: 80px;
    width: 75px;
@@ -177,6 +179,7 @@
  }
 
  /* Aminities */
+
  .amenity-icon {
    width: 60px;
    height: 60px;
@@ -230,6 +233,7 @@
  }
 
  /* Testimonial */
+
  .background {
    background-image: url("/img/20.jpg copy.jpeg");
    background-size: 100%;
@@ -249,6 +253,7 @@
 
 
  /* footer */
+
  .footer {
    background-color: #0f1123;
    padding: 50px 40px 30px;
@@ -361,6 +366,7 @@
  }
 
  /* login */
+ 
  .login-box {
    max-width: 500px;
    margin: auto;

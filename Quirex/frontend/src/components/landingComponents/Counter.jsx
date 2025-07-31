@@ -1,5 +1,4 @@
 import React from 'react'
-import { FaSquareFull } from "react-icons/fa";
 
 const Counter = () => {
   return (

@@ -2,6 +2,7 @@ import express from 'express';
 import { userModel } from '../model/table.js';
 const router = express.Router();
 router.post('/user-register', async (req, res) => {
+
   const { name, email, password, contact, address } = req.body;
   const { profile } = req.files;
   profile.mv("uploads/" + profile?.name, (err) => {
@@ -23,6 +24,8 @@ router.post('/user-register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(email,"fkdlfjglkdfjglk");
+    
     const isLogin = await userModel.findOne({ email, password });
     if (isLogin) {
       res.json({

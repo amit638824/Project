@@ -7,8 +7,21 @@ const userSchema=new mongoose.Schema({
   address:{type:String},
   profile:{type:String},
   userType:{type:String,default:'user'},
-  createdAt:{type:String,default:Date.now},
-  updatedAt:{type:String,default:Date.now}, 
+  createdAt:{type:String,default:Date.now()},
+  updatedAt:{type:String,default:Date.now()}, 
 })
 
 export const userModel=mongoose.model('users',userSchema);
+
+const propertySchema=new mongoose.Schema({
+  title:{type:String},
+  price:{type:String},
+  area:{type:String},
+  description:{type:String},
+  location:{type:String},
+  pic:{type:String}, 
+  createdAt:{type:String,default:Date.now()},
+  updatedAt:{type:String,default:Date.now()}, 
+})
+
+export const propertyModel=mongoose.model('properties',propertySchema)

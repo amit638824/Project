@@ -5,15 +5,15 @@ adminRoute.post('/add-property', async (req, res) => {
     try {
         const { title, price, area, description, location } = req.body;
         const { pic } = req.files;
-          pic.mv("uploads/" + pic?.name, (err) => {
-                if(err){
-                    res.json({
+        pic.mv("uploads/" + pic?.name, (err) => {
+            if (err) {
+                res.json({
                     code: 400,
                     message: "Error in File Upload.",
                     data: ''
                 })
-                }
-            })
+            }
+        })
         const isExist = await propertyModel.findOne({ title });
         if (isExist) {
             res.json({
@@ -22,7 +22,7 @@ adminRoute.post('/add-property', async (req, res) => {
                 data: isExist
             })
         } else {
-          
+
             const data = new propertyModel({ title, price, area, description, location, pic: pic?.name })
             const result = await data.save();
             res.json({
@@ -30,7 +30,7 @@ adminRoute.post('/add-property', async (req, res) => {
                 message: "Property Added Successfully..",
                 data: result
             })
-        } 
+        }
     } catch (err) {
         res.json({
             code: 500,
@@ -40,6 +40,31 @@ adminRoute.post('/add-property', async (req, res) => {
     }
 
 
+})
+
+adminRoute.get('/property-list', async (req, res) => {
+    try {
+        const result = await propertyModel.find();
+        if (result?.length > 0) {
+            res.json({
+                code: 200,
+                message: "Data fetched successfully..",
+                data: result
+            })
+        } else {
+            res.json({
+                code: 400,
+                message: "Data Not Found.",
+                data: []
+            })
+        }
+    } catch (err) {
+        res.json({
+            code: 500,
+            message: "Internal Server Error.",
+            data: []
+        })
+    }
 })
 
 export default adminRoute;

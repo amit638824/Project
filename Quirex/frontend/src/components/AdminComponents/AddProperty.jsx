@@ -20,7 +20,7 @@ const schemaproperty = yup
     pic: yup.mixed()
   })
 const AddProperty = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit,reset, formState: { errors } } = useForm({
     resolver: yupResolver(schemaproperty),
   });
   const addProperty = async (data) => {
@@ -42,6 +42,7 @@ const AddProperty = () => {
         text: response?.data?.message,
         icon: "success"
       })
+      reset()
     } else {
       Swal.fire({
         title: "Add Property",

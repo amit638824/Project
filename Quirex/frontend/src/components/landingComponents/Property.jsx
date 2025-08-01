@@ -1,28 +1,44 @@
 import React, { useEffect, useState } from 'react'
 import { IoBedOutline } from "react-icons/io5";
-import { LuBedSingle } from "react-icons/lu";
-import { FaVectorSquare } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import NavBar from './NavBar';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 const Property = () => {
-   const [listData, setListData] = useState([])
+  const [listData, setListData] = useState([])
   useEffect(() => {
     fetchData()
   }, [])
 
   const fetchData = async () => {
     const response = await axios.get('http://localhost:9000/api/property-list');
-     if(response?.data?.code==200){
+    if (response?.data?.code == 200) {
       setListData(response?.data?.data)
-     }
+    }
 
   }
   const location = useLocation();
+  const handleBuy = async (propertyId) => {
+    const userData = JSON.parse(localStorage.getItem('userInfo'));
+    const response = await axios.post('http://localhost:9000/api/buy', { userId: userData?._id, propertyId });
+    if (response?.data?.code == 200) {
+      Swal.fire({
+        title: "Buy Property",
+        text: response?.data?.message,
+        icon: 'success'
+      })
+    } else {
+      Swal.fire({
+        title: "Buy Property",
+        text: response?.data?.message,
+        icon: 'error'
+      })
+    }
+  }
   return (
     <>
       {location?.pathname != "/" && <NavBar />}
-     <div className='row property py-5'>
+      <div className='row property py-5'>
         <div className="text-center ">
           <div className="tagline ">Properties </div>
           <h2 className="section-title">Featured Listings</h2>
@@ -34,7 +50,7 @@ const Property = () => {
               return (<>
                 <div className='col-sm-3  px-3 mb-4'>
                   <div className="card  mx-auto shadow-lg border border-0">
-                    <img src="/img/1.png" className="card-img-top img-fluid featuredimg" alt="..." />
+                    <img src={`http://localhost:9000/img/${item?.pic}`} className="card-img-top img-fluid featuredimg" alt="..." />
                     <div className="card-body">
                       <p className='mycolor1'><b>${item?.price}</b>/Month</p>
                       <h5 className="card-title"><b className='mycolor2'>{item?.title}</b></h5>
@@ -42,9 +58,9 @@ const Property = () => {
                       <div className='row'>
                         <div className='col-4 featureddiv featuredp'>
                           <p className='m-0 ps-2'>{item?.area}<IoBedOutline /></p>
-                          <span className='ps-2'>Bedrooms</span>
+                          <span className='ps-2'>Bedroom</span>
                         </div>
-                         
+                        <button onClick={() => handleBuy(item?._id)} className='btn btn-outline-danger'>Buy</button>
                       </div>
                     </div>
                   </div>
@@ -64,4 +80,3 @@ export default Property
 
 
 
-  

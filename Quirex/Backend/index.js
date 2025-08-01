@@ -10,6 +10,7 @@ app.use(fileUpload());
 app.use(cors());
 const PORT=9000; 
 dbConnect();
+app.use('/img',express.static('uploads'));
  app.use('/api',router);
  app.use('/api',adminRoute)
 app.listen(PORT,()=>{

@@ -35,7 +35,7 @@ console.log(listData,"ghgfyuyiuoiopiujfuoi9uyt");
               return (<>
                 <div className='col-sm-3  px-3 mb-4'>
                   <div className="card  mx-auto shadow-lg border border-0">
-                    <img src="/img/1.png" className="card-img-top img-fluid featuredimg" alt="..." />
+                    <img src={`http://localhost:9000/img/${item?.pic}`}  className="card-img-top img-fluid featuredimg" alt="..." />
                     <div className="card-body">
                       <p className='mycolor1'><b>${item?.price}</b>/Month</p>
                       <h5 className="card-title"><b className='mycolor2'>{item?.title}</b></h5>

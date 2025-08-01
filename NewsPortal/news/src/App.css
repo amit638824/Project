@@ -1,3 +1,6 @@
+body{
+  overflow-x: hidden;
+}
 .NewsDet {
   height: 500px;
   width: 100%;
@@ -297,4 +300,30 @@ height:360px;
 }
 .latestimg{
   height:120px;
+}
+.aboutimg{
+  height: 150px;
+}
+.topnewsimg{
+  height:200px;
+}
+.topnewstext{
+  font-size:12px;
+}
+.topnewscard a{
+  text-decoration: none;
+}
+.footer{
+  min-height:250px;
+  background-color: black;
+}
+.footerlogo{
+  height:60px;
+}
+.footertext{
+  font-size: 15px;
+}
+.bfooter{
+  height:50px;
+  background:black;
 }

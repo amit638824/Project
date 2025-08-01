@@ -11,6 +11,8 @@ import ImageGallery from './ImageGallery';
 import ContactUs from './ContactUs';
 import About from './About';
 import Navbar from './Navbar';
+import TopNews from './TopNews';
+import Footer from './Footer';
 function Home() {
   return (
     <>
@@ -24,9 +26,8 @@ function Home() {
       <ImageGallery />
       <ContactUs />
       < About />
-
-
-
+      <TopNews />
+      <Footer />
 
 
 

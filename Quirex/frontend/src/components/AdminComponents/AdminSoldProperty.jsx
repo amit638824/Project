@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../landingComponents/NavBar'
-import axios from 'axios'
+import axios from 'axios';
+import Swal from 'sweetalert2';
 const AdminSoldProperty = () => {
   const [data, setData] = useState([])
   useEffect(() => {
@@ -12,6 +13,38 @@ const AdminSoldProperty = () => {
       setData(response?.data?.data)
     }
   } 
+
+   const handleDeleteProperty = async (_id) => {
+    Swal.fire({
+      title: "Are you sure ?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+
+     const response = await axios.post('http://localhost:9000/api/delete-sold-item', { _id });
+        if (response?.data?.code == 200) {
+          Swal.fire({
+            title: "Delete Property.",
+            text: response?.data?.message,
+            icon: "success",
+          })
+          fetchData();
+        }else{
+          Swal.fire({
+            title: "Delete Property.",
+            text: response?.data?.message,
+            icon: "error",
+          })
+        }
+      }
+    });
+  }
+
   return (
     <div>
       <NavBar />
@@ -31,12 +64,12 @@ const AdminSoldProperty = () => {
                 <th>Area  </th>
                 <th>Location  </th>
                 <th> Media </th>
+                 <th> Action </th>
               </tr>
             </thead>
             <tbody>
               {
-                data?.map((item,index) => {
-                  console.log(item,"loop");
+                data?.map((item,index) => { 
                   
                   return (<>
                     <tr>
@@ -49,6 +82,7 @@ const AdminSoldProperty = () => {
                       <td>{item?.area}    </td>
                       <td>{item?.location}    </td>
                       <td><img  height="60" width="100" src={`http://localhost:9000/img/${item?.pic}`} alt=''/>    </td>
+                   <td> <button onClick={()=>handleDeleteProperty(item?._id)} className='btn btn-outline-danger'>Delete</button></td>
                     </tr>
                   </>)
                 })

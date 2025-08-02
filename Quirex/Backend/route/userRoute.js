@@ -40,39 +40,40 @@ router.post('/user-register', async (req, res) => {
   }
 })
 
-router.put('/user-update',async(req,res)=>{
-try{
-   const { name, email, password, contact, address,userId } = req.body;
+router.put('/user-update', async (req, res) => {
+  try {
+    const { name, email, password, contact, address, userId } = req.body;
     const { profile } = req.files;
-    profile.mv("uploads/"+profile?.name,(err)=>{
-      if(err){
+    profile.mv("uploads/" + profile?.name, (err) => {
+      if (err) {
         res.json({
-          code:400,
-          message:"Error In File Upload"
+          code: 400,
+          message: "Error In File Upload"
         })
       }
     })
- const result= await  userModel.findByIdAndUpdate({_id:userId},{name,email,password,contact,address,profile:profile?.name},{new:true})
-if(result){
-  res.json({
-    code:200,
-    message:"User Updated Successfully.",
-    data:result
-  })
-}else{
-  res.json({
-    code:400,
-    message:"User Updated Failed.",
-    data: ''
-  })
-}
-}catch(err){
-res.json({
-  code:500,
-  message:"Internal Server Error."
+    const result = await userModel.findByIdAndUpdate({ _id: userId }, { name, email, password, contact, address, profile: profile?.name }, { new: true })
+    if (result) {
+      res.json({
+        code: 200,
+        message: "User Updated Successfully.",
+        data: result
+      })
+    } else {
+      res.json({
+        code: 400,
+        message: "User Updated Failed.",
+        data: ''
+      })
+    }
+  } catch (err) {
+    res.json({
+      code: 500,
+      message: "Internal Server Error."
+    })
+  }
 })
-}
-})
+
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;

@@ -26,8 +26,7 @@ const UserProfile = () => {
     setValue('email', userData?.email);
     setValue('contact', userData?.contact);
     setValue('password', userData?.password);
-    setValue('address', userData?.address);
-    setValue('profile', userData?.profile);
+    setValue('address', userData?.address); 
   }, [])
 
   const { register, handleSubmit, setValue, formState: { errors },
@@ -36,40 +35,46 @@ const UserProfile = () => {
   });
 
 
-  const handleRegister = async (data) => {
-    try {
-      const formData = new FormData();
-
+  const handleRegister = async (data) => { 
+    if(data?.profile?.length==0){
+      Swal.fire({
+        title:"File Upload Error",
+        text:"Please upload a valid file.",
+        icon:"error"
+      })
+      return
+    }
+     const userData= JSON.parse(localStorage.getItem('userInfo'))
+      const formData = new FormData(); 
       formData.append('name', data.name);
       formData.append('email', data.email);
       formData.append('contact', data.contact);
       formData.append('password', data.password);
       formData.append('address', data.address);
       formData.append('profile', data.profile[0]);
+      formData.append('userId',userData?._id)
 
-      const response = await axios.post('http://localhost:9000/api/user-register', formData, {
+      const response = await axios.put('http://localhost:9000/api/user-update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      if (response.status === 200) {
+      if (response.data?.code  === 200) {
         Swal.fire({
-          title: "Registration Successful",
+          title: "Profile Update",
           text: response?.data?.message,
           icon: "success"
-        });
-
-      }
-    } catch (error) {
-      console.error('Registration error:', error);
-      Swal.fire({
-        title: "Registration Failed",
-        text: response?.data?.message,
-        icon: "error"
-
-      });
-    }
+        }); 
+        localStorage.setItem('userInfo',JSON.stringify(response?.data?.data))
+      }else{
+        Swal.fire({
+          title: "Profile Update",
+          text: response?.data?.message,
+          icon: "error"
+        }); 
+      } 
   };
+
   return (
     <>
       <NavBar />
@@ -78,7 +83,7 @@ const UserProfile = () => {
         <div className="row justify-content-center">
           <div className="col-md-10 col-lg-8">
             <div className="form-box">
-              <form onSubmit={handleSubmit(handleRegister)}>
+              <form onSubmit={handleSubmit((d)=>handleRegister(d))}>
                 <div className="row g-3">
 
                   <div className="col-md-6">

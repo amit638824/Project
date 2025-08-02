@@ -41,7 +41,6 @@ adminRoute.post('/add-property', async (req, res) => {
 
 
 })
-
 adminRoute.get('/property-list', async (req, res) => {
     try {
         const result = await propertyModel.find();
@@ -73,7 +72,7 @@ adminRoute.get('/admin-sold-list', async (req, res) => {
         const finalData = await Promise.all(
             raw?.map(async (item) => {
                 const propertyData = await propertyModel.findOne({ _id: item?.propertyId });
-                const userData = await userModel.findOne({ _id: item?.userId }); 
+                const userData = await userModel.findOne({ _id: item?.userId });
                 return {
                     _id: item?._id,
                     propertyId: propertyData?._id,
@@ -86,13 +85,13 @@ adminRoute.get('/admin-sold-list', async (req, res) => {
                     name: userData?.name,
                     email: userData?.email,
                     contact: userData?.contact
-                } 
+                }
             })
         )
         res.json({
-            code:200,
-            message:"Data fetched.",
-            data:finalData
+            code: 200,
+            message: "Data fetched.",
+            data: finalData
         })
     } catch (err) {
         res.json({
@@ -103,4 +102,78 @@ adminRoute.get('/admin-sold-list', async (req, res) => {
     }
 })
 
+adminRoute.post('/delete-property', async (req, res) => {
+    try {
+        const { _id } = req.body;
+        const result = await propertyModel.findByIdAndDelete({ _id });
+        if (result) {
+            res.json({
+                code: 200,
+                message: "Property Deleted Successfully.",
+                data: ''
+            })
+        }else{
+             res.json({
+                code: 400,
+                message: "Property Delete failed!",
+                data: ''
+            })
+        }
+    } catch (err) {
+        res.json({
+            code: 500,
+            message: "Internal Server Error.",
+            data: ''
+        })
+    }
+})
+adminRoute.post('/delete-sold-item', async (req, res) => {
+    try {
+        const { _id } = req.body;
+        const result = await buyerModel.findByIdAndDelete({ _id });
+        if (result) {
+            res.json({
+                code: 200,
+                message: "Property Deleted Successfully.",
+                data: ''
+            })
+        }else{
+             res.json({
+                code: 400,
+                message: "Property Delete failed!",
+                data: ''
+            })
+        }
+    } catch (err) {
+        res.json({
+            code: 500,
+            message: "Internal Server Error.",
+            data: ''
+        })
+    }
+})
+adminRoute.get('/admin-user-list', async (req, res) => {
+    try {
+        const result = await userModel.find({userType:"user"});
+        if (result?.length > 0) {
+            res.json({
+                code: 200,
+                message: "Data fetched successfully..",
+                data: result
+            })
+        } else {
+            res.json({
+                code: 400,
+                message: "Data Not Found.",
+                data: []
+            })
+        }
+    } catch (err) {
+        res.json({
+            code: 500,
+            message: "Internal Server Error.",
+            data: []
+        })
+    }
+})
 export default adminRoute;

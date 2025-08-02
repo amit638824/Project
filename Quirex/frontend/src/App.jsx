@@ -21,8 +21,19 @@ import AdminLogout from './components/AdminComponents/AdminLogout';
 import UserBoughtList from './components/userComponents/UserBoughtList';
 import UserProfile from './components/userComponents/UserProfile';
 import UserLogOut from './components/userComponents/UserLogOut';
+import Aos from 'aos';
+import { useEffect } from 'react';
+import 'aos/dist/aos.css'
 function App() {
 
+useEffect(()=>{
+   Aos.init({
+      offset: 200,
+      duration: 600,
+      easing: 'ease-in-sine',
+      delay: 100,
+    });
+})
   return (
     <>
       <BrowserRouter>

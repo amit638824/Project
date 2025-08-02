@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { IoBedOutline } from "react-icons/io5";
-import { LuBedSingle } from "react-icons/lu";
-import { FaVectorSquare } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import NavBar from '../landingComponents/NavBar'
 import axios from 'axios';
+import Swal from 'sweetalert2';
 const AdminPropertyList = () => {
   const [listData, setListData] = useState([])
   useEffect(() => {
@@ -12,14 +12,42 @@ const AdminPropertyList = () => {
 
   const fetchData = async () => {
     const response = await axios.get('http://localhost:9000/api/property-list');
-     if(response?.data?.code==200){
+    if (response?.data?.code == 200) {
       setListData(response?.data?.data)
-     }
+    }
 
   }
 
-console.log(listData,"ghgfyuyiuoiopiujfuoi9uyt");
+  const handleDeleteProperty = async (_id) => {
+    Swal.fire({
+      title: "Are you sure ?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
 
+     const response = await axios.post('http://localhost:9000/api/delete-property', { _id });
+        if (response?.data?.code == 200) {
+          Swal.fire({
+            title: "Delete Property.",
+            text: response?.data?.message,
+            icon: "success",
+          })
+          fetchData();
+        }else{
+          Swal.fire({
+            title: "Delete Property.",
+            text: response?.data?.message,
+            icon: "error",
+          })
+        }
+      }
+    });
+  }
   return (
     <>
       <NavBar />
@@ -35,7 +63,7 @@ console.log(listData,"ghgfyuyiuoiopiujfuoi9uyt");
               return (<>
                 <div className='col-sm-3  px-3 mb-4'>
                   <div className="card  mx-auto shadow-lg border border-0">
-                    <img src={`http://localhost:9000/img/${item?.pic}`}  className="card-img-top img-fluid featuredimg" alt="..." />
+                    <img src={`http://localhost:9000/img/${item?.pic}`} className="card-img-top img-fluid featuredimg" alt="..." />
                     <div className="card-body">
                       <p className='mycolor1'><b>${item?.price}</b>/Month</p>
                       <h5 className="card-title"><b className='mycolor2'>{item?.title}</b></h5>
@@ -45,7 +73,7 @@ console.log(listData,"ghgfyuyiuoiopiujfuoi9uyt");
                           <p className='m-0 ps-2'>{item?.area}<IoBedOutline /></p>
                           <span className='ps-2'>Bedrooms</span>
                         </div>
-                         
+                        <button onClick={() => handleDeleteProperty(item?._id)} className='btn btn-outline-danger p-1'>Delete</button>
                       </div>
                     </div>
                   </div>

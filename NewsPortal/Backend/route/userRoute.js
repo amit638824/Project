@@ -154,8 +154,8 @@ router.get("/user-your-news", async (req, res) => {
    }
 })
 router.get("/all-approved-news", async (req, res) => {
-   try { 
-      const result = await newsModel.find({ isApproved:true }).sort({ createAt: -1 });
+   try {
+      const result = await newsModel.find({ isApproved: true }).sort({ createAt: -1 });
       res.json({
          code: 200,
          message: "Data fetched succeessfully..",
@@ -212,4 +212,41 @@ router.put("/admin-news-approved", async (req, res) => {
       })
    }
 })
+
+router.get('/top-ten-news', async (req, res) => {
+   try {
+      const result = await newsModel.find({ type: "image" }).sort({ createAt: -1 }).limit(10);
+      res.json({
+         code: 200,
+         message: "Data fetched successfully",
+         data: result
+      })
+
+   } catch (err) {
+      res.json({
+         code: 500,
+         message: "Internal Server Error",
+         data: ""
+      })
+   }
+})
+
+router.get('/top-category', async (req, res) => {
+   try {
+      const result = await newsModel.distinct({ category })
+      res.json({
+         code: 200,
+         message: "Data fetched successfully",
+         data: result
+      })
+
+   } catch (err) {
+      res.json({
+         code: 500,
+         message: "Internal Server Error",
+         data: ""
+      })
+   }
+})
+
 export default router;

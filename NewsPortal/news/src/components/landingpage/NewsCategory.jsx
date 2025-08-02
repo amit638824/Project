@@ -1,9 +1,20 @@
-import React from 'react'
+import React ,{useState,useEffect} from 'react'
 import Navbar from './Navbar'
 import   {useLocation} from 'react-router-dom';
-
+import axios from 'axios';
 function NewsCategory() {
   const location=useLocation()
+ const [data, setData] = useState([])
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = async () => {
+    const response = await axios.get('http://localhost:9000/api/top-ten-news');
+    if (response?.data?.code == 200) {
+      setData(response?.data?.data)
+    }
+  }
 
   return (
     <>

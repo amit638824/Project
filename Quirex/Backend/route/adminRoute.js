@@ -1,5 +1,5 @@
 import express from 'express';
-import { propertyModel } from '../model/table.js'
+import { propertyModel, buyerModel, userModel } from '../model/table.js'
 const adminRoute = express.Router();
 adminRoute.post('/add-property', async (req, res) => {
     try {
@@ -58,6 +58,42 @@ adminRoute.get('/property-list', async (req, res) => {
                 data: []
             })
         }
+    } catch (err) {
+        res.json({
+            code: 500,
+            message: "Internal Server Error.",
+            data: []
+        })
+    }
+})
+
+adminRoute.get('/admin-sold-list', async (req, res) => {
+    try {
+        const raw = await buyerModel.find();
+        const finalData = await Promise.all(
+            raw?.map(async (item) => {
+                const propertyData = await propertyModel.findOne({ _id: item?.propertyId });
+                const userData = await userModel.findOne({ _id: item?.userId }); 
+                return {
+                    _id: item?._id,
+                    propertyId: propertyData?._id,
+                    title: propertyData?.title,
+                    price: propertyData?.price,
+                    area: propertyData?.area,
+                    location: propertyData?.location,
+                    description: propertyData?.description,
+                    pic: propertyData?.pic,
+                    name: userData?.name,
+                    email: userData?.email,
+                    contact: userData?.contact
+                } 
+            })
+        )
+        res.json({
+            code:200,
+            message:"Data fetched.",
+            data:finalData
+        })
     } catch (err) {
         res.json({
             code: 500,

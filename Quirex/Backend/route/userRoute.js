@@ -103,6 +103,7 @@ router.post('/user-bought-list', async (req, res) => {
     const finalData = await Promise.all(
       raw?.map(async (item) => {
         const propertyData = await propertyModel.findOne({ _id: item?.propertyId });
+        
         return {
           _id: item?._id,
           propertyId: propertyData?._id,

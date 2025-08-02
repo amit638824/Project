@@ -15,52 +15,52 @@ const schema = yup.object().shape({
   contact: yup.string().required(),
   password: yup.string().required().min(8).max(20),
   address: yup.string().required(),
-  profile: yup.mixed().required() 
+  profile: yup.mixed().required()
 });
 
 const UserRegister = () => {
-  
-  const {register,handleSubmit,formState: { errors },
+
+  const { register, handleSubmit, formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  
-    const handleRegister = async (data) => {
-  try {
-    const formData = new FormData();
 
-    formData.append('name', data.name);
-    formData.append('email', data.email);
-    formData.append('contact', data.contact);
-    formData.append('password', data.password);
-    formData.append('address', data.address);
-    formData.append('profile', data.profile[0]); 
+  const handleRegister = async (data) => {
+    try {
+      const formData = new FormData();
 
-    const response = await axios.post('http://localhost:9000/api/user-register', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-if (response.status === 200) {
-      Swal.fire({
-        title: "Registration Successful",
-        text: response?.data?.message,
-        icon: "success"
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('contact', data.contact);
+      formData.append('password', data.password);
+      formData.append('address', data.address);
+      formData.append('profile', data.profile[0]);
+
+      const response = await axios.post('http://localhost:9000/api/user-register', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
-     
-    }
-  } catch (error) {
-    console.error('Registration error:', error);
-    Swal.fire({
-       title: "Registration Failed",
+      if (response.status === 200) {
+        Swal.fire({
+          title: "Registration Successful",
+          text: response?.data?.message,
+          icon: "success"
+        });
+
+      }
+    } catch (error) {
+      console.error('Registration error:', error);
+      Swal.fire({
+        title: "Registration Failed",
         text: response?.data?.message,
         icon: "error"
 
-    });
-  }
-};
- return (
+      });
+    }
+  };
+  return (
     <>
       <NavBar />
       <div className="container my-5">
@@ -70,7 +70,7 @@ if (response.status === 200) {
             <div className="form-box">
               <form onSubmit={handleSubmit(handleRegister)}>
                 <div className="row g-3">
-                 
+
                   <div className="col-md-6">
                     <label className="form-label">Your Name</label>
                     <div className="input-group">
@@ -80,7 +80,7 @@ if (response.status === 200) {
                     {errors.name && <p className="text-danger">{errors.name.message}</p>}
                   </div>
 
-                  
+
                   <div className="col-md-6">
                     <label className="form-label">Your Email</label>
                     <div className="input-group">
@@ -90,7 +90,7 @@ if (response.status === 200) {
                     {errors.email && <p className="text-danger">{errors.email.message}</p>}
                   </div>
 
-                 
+
                   <div className="col-md-6">
                     <label className="form-label">Phone Number</label>
                     <div className="input-group">
@@ -100,7 +100,7 @@ if (response.status === 200) {
                     {errors.contact && <p className="text-danger">{errors.contact.message}</p>}
                   </div>
 
-                 
+
                   <div className="col-md-6">
                     <label className="form-label">Password</label>
                     <div className="input-group">
@@ -110,9 +110,9 @@ if (response.status === 200) {
                     {errors.password && <p className="text-danger">{errors.password.message}</p>}
                   </div>
 
-                 
-                 
-                   <div className="col-md-6">
+
+
+                  <div className="col-md-6">
                     <label className="form-label">Address</label>
                     <div className="input-group">
                       <span className="input-group-text"><FaKey /></span>
@@ -120,8 +120,8 @@ if (response.status === 200) {
                     </div>
                     {errors.address && <p className="text-danger">{errors.address.message}</p>}
                   </div>
-              
-                  
+
+
                   <div className="col-md-6">
                     <label className="form-label">Profile Picture</label>
                     <div className="input-group">
@@ -131,7 +131,7 @@ if (response.status === 200) {
                     {errors.profile && <p className="text-danger">{errors.profile.message}</p>}
                   </div>
 
-                 
+
                   <div className="text-center mt-4">
                     <input type="submit" className="btn px-5 btn-login" value="Register" />
                   </div>

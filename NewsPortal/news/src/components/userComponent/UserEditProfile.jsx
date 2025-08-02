@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../landing page/Navbar'
+import Navbar from '../landingpage/Navbar'
 const UserEditProfile = () => {
   return (
    <>

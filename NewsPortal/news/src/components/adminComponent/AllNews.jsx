@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import Navbar from '../landing page/Navbar'
+import Navbar from '../landingpage/Navbar'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 const AllNews = () => {

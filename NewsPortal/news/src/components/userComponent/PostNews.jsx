@@ -3,7 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import Navbar from '../landing page/Navbar';
+import Navbar from '../landingpage/Navbar';
 import axios from 'axios'; 
 import Swal from 'sweetalert2';
 const Newsschema = yup

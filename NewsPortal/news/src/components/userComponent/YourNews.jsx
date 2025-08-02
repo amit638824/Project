@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../landingpage/Navbar'
-import axios from 'axios'
+import axios from 'axios';
+import Swal from 'sweetalert2';
 const YourNews = () => {
   const [newsList, setNewsList] = useState([])
   useEffect(() => {
@@ -13,6 +14,13 @@ const YourNews = () => {
     if (response?.data?.code == 200) {
       setNewsList(response?.data?.data)
     }
+  }
+
+  const showDescription=(des)=>{
+ Swal.fire({
+  text:des,
+  icon:"info"
+ })
   }
 
   return (
@@ -38,7 +46,7 @@ const YourNews = () => {
                     <th >{item?.title}</th>
                     <td>{item?.category}</td>
                     <td><img height='60' width='100' src={item?.url}/></td>
-                    <td>{item?.desc?.slice(0,15)}...</td>
+                    <td onClick={()=>showDescription(item?.desc)} >{item?.desc?.slice(0,15)}...</td>
                   </tr>
                 </>)
               })}

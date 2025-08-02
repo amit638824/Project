@@ -44,6 +44,44 @@ router.post('/user-register', async (req, res) => {
    }
 });
 
+router.put('/user-update', async (req, res) => {
+   try {
+      const { name, email, password, contact, address, _id } = req.body;
+      const { profile } = req.files;
+      profile.mv("uploads/" + profile.name, (err) => {
+         if (err) {
+            res.json({
+               code: 400,
+               message: "Failed File Upload!",
+               data: ''
+            })
+         }
+      });
+      const resutl = await userModel.findByIdAndUpdate({ _id }, { name, email, password, contact, address, profile: profile?.name }, { new: true })
+      if (resutl) {
+         res.json({
+            code: 200,
+            message: "Profile Updated successfully..",
+            data: resutl
+         })
+      } else {
+
+         res.json({
+            code: 400,
+            message: "Profile Update Failed.",
+            data: ''
+         })
+      }
+   } catch (err) {
+      res.json({
+         code: 500,
+         message: "internal server error",
+         data: ""
+      });
+   }
+
+})
+
 router.post('/login', async (req, res) => {
    try {
       const { email, password } = req.body;
@@ -102,6 +140,22 @@ router.get("/user-your-news", async (req, res) => {
    try {
       const { userId } = req.query;
       const result = await newsModel.find({ userId }).sort({ createAt: -1 });
+      res.json({
+         code: 200,
+         message: "Data fetched succeessfully..",
+         data: result
+      })
+   } catch (err) {
+      res.json({
+         code: 500,
+         message: "Internal Server Error",
+         data: ""
+      })
+   }
+})
+router.get("/all-approved-news", async (req, res) => {
+   try { 
+      const result = await newsModel.find({ isApproved:true }).sort({ createAt: -1 });
       res.json({
          code: 200,
          message: "Data fetched succeessfully..",

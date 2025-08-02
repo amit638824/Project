@@ -46,6 +46,7 @@ const AllNews = () => {
                 <th scope="col">Category</th>
                 <th scope="col">Media</th>
                 <th scope="col">Description</th>
+                <th scope="col">Status</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -57,8 +58,8 @@ const AllNews = () => {
                     <td>{item?.category}</td>
                     <td><img height='60' width='100' src={item?.url} /></td>
                     <td>{item?.desc?.slice(0, 15)}...</td>
-                    <td>
-
+                    <td>{item?.isApproved ? "Approved" : "Not Approved!"}</td>
+                    <td> 
                       <button onClick={() => handleApproval(item?._id, item?.isApproved)} className='btn btn-outline-danger  '>{item?.isApproved ? "No" : "Yes"}</button>
                     </td>
                   </tr>

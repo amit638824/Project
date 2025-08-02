@@ -1,11 +1,12 @@
 
-import React from 'react';
+import React, { use } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Navbar from '../landingpage/Navbar';
 import axios from 'axios'; 
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 const Newsschema = yup
   .object()
   .shape({
@@ -16,6 +17,7 @@ const Newsschema = yup
     desc: yup.string().required().min(2).max(1000),
   })
 const PostNews = () => {
+  const Navigate=useNavigate();
   const { register, handleSubmit,reset, formState: { errors } } = useForm({
     resolver: yupResolver(Newsschema),
   });
@@ -29,6 +31,7 @@ const PostNews = () => {
         text: response?.data?.message,
         icon: "success"
       })
+      Navigate('/user-list')
       reset()
     } else {
       Swal.fire({

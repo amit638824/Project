@@ -44,6 +44,7 @@ const YourNews = () => {
               })}
             </tbody>
           </table>
+           {newsList?.length==0 && <h3 className='text-center'>No Records Found</h3>}
         </div>
         <div className="col-sm-1"></div>
       </div>

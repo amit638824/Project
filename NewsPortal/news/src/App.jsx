@@ -21,6 +21,7 @@ import UserEditProfile from './components/userComponent/UserEditProfile';
 import PostNews from './components/userComponent/PostNews';
 import YourNews from './components/userComponent/YourNews';
 import UserAllNewsList from './components/userComponent/UserAllNewsList'; 
+import Footer from './components/landingpage/Footer';
 function App() {
   return (<>
     <BrowserRouter>
@@ -47,6 +48,7 @@ function App() {
         <Route path='/user-list' element={<YourNews />} />
         <Route path='/user-alllist' element={<UserAllNewsList />} /> 
       </Routes>
+      <Footer/>
     </BrowserRouter>
 
   </>)

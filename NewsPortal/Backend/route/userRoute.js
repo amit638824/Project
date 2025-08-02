@@ -8,32 +8,36 @@ router.post('/user-register', async (req, res) => {
       const { name, email, password, contact, address } = req.body;
       const { profile } = req.files;
 
-      if (!profile) {
-         return res.send("Profile image is required");
-      }
-
       profile.mv("uploads/" + profile.name, (err) => {
          if (err) {
-            return res.send(err);
+            res.json({
+               code: 400,
+               message: "Failed File Upload!",
+               data: ''
+            })
          }
       });
 
       const isExist = await userModel.findOne({ email });
       if (isExist) {
-         return res.send("user already exist");
+         // return res.send("user already exist");
+         res.json({
+            code: 400,
+            message: "User already exist!",
+            data: isExist
+         })
+      } else {
+
+         const data = new userModel({ name, email, password, contact, address, profile: profile.name });
+
+         const result = await data.save();
+         res.json({
+            code: 200,
+            message: "User registered successfully!",
+            data: result
+         })
       }
 
-      const data = new userModel({
-         name,
-         email,
-         password,
-         contact,
-         address,
-         profile: profile.name
-      });
-
-      const result = await data.save();
-      res.send(result);
 
    } catch (error) {
       res.send("Something went wrong");
@@ -133,19 +137,19 @@ router.put("/admin-news-approved", async (req, res) => {
    try {
       const { _id, isApproved } = req.body;
       const result = await newsModel.findByIdAndUpdate({ _id }, { isApproved }, { new: true });
-     if(result){
-       res.json({
-         code: 200,
-         message: "Updated succeessfully..",
-         data: result
-      })
-     }else{
-        res.json({
-         code: 400,
-         message: "Updated Failed.",
-         data: result
-      })
-     }
+      if (result) {
+         res.json({
+            code: 200,
+            message: "Updated succeessfully..",
+            data: result
+         })
+      } else {
+         res.json({
+            code: 400,
+            message: "Updated Failed.",
+            data: result
+         })
+      }
    } catch (err) {
       res.json({
          code: 500,

@@ -34,7 +34,7 @@ const AllNews = () => {
   }
   return (
     <>
-      
+      <Navbar/>
       <div className="row mt-3">
         <div className="col-sm-1"></div>
         <div className="col-sm-10">
@@ -64,8 +64,10 @@ const AllNews = () => {
                   </tr>
                 </>)
               })}
+              
             </tbody>
           </table>
+          {newsList?.length==0 && <h3 className='text-center'>No Records Found</h3>}
         </div>
         <div className="col-sm-1"></div>
       </div>

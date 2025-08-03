@@ -6,12 +6,12 @@ import { FaTwitter } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 function TopNavbar() {
     return (<>
-        <div className="TopNav">
-            <div className="a"><MdOutgoingMail />rvverma8090@gmail.com</div>
-            <div className="b"><FaFacebook />
-                <FaYoutube />
-                <FaTwitter />
-                <FaInstagramSquare />
+        <div className="TopNav d-flex justify-content-around align-items-center py-3">
+            <div className="fs-5"><MdOutgoingMail  className='me-1 fs-3'/>rvverma8090@gmail.com</div>
+            <div><FaFacebook  className='me-2 fs-4'/>
+                <FaYoutube className='me-2 fs-4' />
+                <FaTwitter  className='me-2 fs-4'/>
+                <FaInstagramSquare className='me-2 fs-4' />
             </div>
         </div>
     </>);

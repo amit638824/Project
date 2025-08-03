@@ -164,5 +164,5 @@ router.post('/user-bought-list', async (req, res) => {
     })
   }
 })
-
+ 
 export default router;

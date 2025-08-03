@@ -54,6 +54,10 @@ body{
   width: 100%;
 }
 
+.navbarUl{
+  gap: 25px !important;
+}
+
 .a {
   height: 35px;
   width: 60%;
@@ -107,7 +111,7 @@ body{
 }
 
 .carousel-item {
-  height: 400px;
+  height: 500px;
   width: 100%;
   background-size: cover;
   background-size: 100%;
@@ -262,7 +266,7 @@ body{
 }
 
 .sliderimg{
-  height:400px;
+  height:500px;
 }
 .bg-mycolor{
   background:#7F0000;
@@ -277,7 +281,7 @@ body{
   min-height: 350px;
 }
 .headmarquee{
-  height:360px;
+  height:500px;
 }
 .headline{
 height:360px;

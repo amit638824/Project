@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js'; 
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useLocation, Routes, Route } from 'react-router-dom';
 import TopNavbar from './components/landingComponents/TopNavbar';
 import Navbar from './components/landingComponents/NavBar';
 import Home from './components/landingComponents/Home';
@@ -21,22 +21,37 @@ import AdminLogout from './components/AdminComponents/AdminLogout';
 import UserBoughtList from './components/userComponents/UserBoughtList';
 import UserProfile from './components/userComponents/UserProfile';
 import UserLogOut from './components/userComponents/UserLogOut';
-import Aos from 'aos';
-import { useEffect } from 'react';
+import ContactUs from './components/landingComponents/ContactUs';
+import NotFound from './NotFound';
 import 'aos/dist/aos.css'
-function App() {
+import AOS from 'aos';
+import { useEffect, useState } from 'react';
 
-useEffect(()=>{
-   Aos.init({
+function App() {
+  const location =useLocation()
+  const [userData ,setUserData]=useState(null);
+    // Role base authentication
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
+    setUserData(user);
+  }, [location]);
+
+ 
+  
+  
+  useEffect(()=>{
+          AOS.init({
       offset: 200,
       duration: 600,
       easing: 'ease-in-sine',
       delay: 100,
     });
-})
+
+  },[])
+
   return (
     <>
-      <BrowserRouter>
+      
         <TopNavbar />
         {/* <Navbar /> */}
         <Routes>
@@ -45,21 +60,31 @@ useEffect(()=>{
           <Route path='/about' element={<About />} />
           <Route path='/services' element={<Services />} />
           <Route path='/property' element={<Property />} />
+          <Route path='/ContactUs' element={<ContactUs />} />
+         
           <Route path='/register' element={<UserRegister />} />
           <Route path='/login' element={<Login />} />
           {/* admin Section  */}
+          {userData?.userType=="admin" && <>
           <Route path='/admin-add' element={<AddProperty />} />
           <Route path='/admin-list' element={<AdminPropertyList />} />
           <Route path='/admin-sold' element={<AdminSoldProperty />} />
           <Route path='/admin-user' element={<UserList />} />
           <Route path='/admin-profile' element={<AdminProfile />} />
           <Route path='/admin-contact' element={<AdminContactUsList />} /> 
+          
+          </>}
           {/* User Route */}
+          {userData?.userType=="user" && <>
           <Route path='/user-property' element={<Property />} />
           <Route path='/user-bought' element={<UserBoughtList/>} />
           <Route path='/user-profile' element={<UserProfile/>} /> 
+          <Route path='/ContactUs' element={<ContactUs />} />
+          
+          </>}
+          <Route path='*' element={< NotFound />}/>
         </Routes>
-      </BrowserRouter>
+      
      <Footer/>
     </>
   )

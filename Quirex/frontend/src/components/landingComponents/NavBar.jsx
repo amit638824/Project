@@ -79,6 +79,11 @@ const NavBar = () => {
                 <li className="nav-item"><Link className="nav-link text-dark fw-bold" to="/about">About</Link></li>
                 <li className="nav-item"><Link className="nav-link text-dark fw-bold" to="/services">Services</Link></li>
                 <li className="nav-item"><Link className="nav-link text-dark fw-bold" to="/property">Property</Link></li>
+                <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/ContactUS">
+                   <b>ContactUs</b>
+                </Link>
+              </li>
               </ul>
               <div className="d-flex align-items-center gap-3">
                 <Link to='/register'>  <button className=" btn1 px-4 py-2  ">Registration</button></Link>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { IoBedOutline } from "react-icons/io5";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import NavBar from './NavBar';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -18,8 +18,13 @@ const Property = () => {
 
   }
   const location = useLocation();
+  const navigate=useNavigate();
   const handleBuy = async (propertyId) => {
     const userData = JSON.parse(localStorage.getItem('userInfo'));
+    if(!userData?._id){
+      navigate('/login')
+      return
+    }
     const response = await axios.post('http://localhost:9000/api/buy', { userId: userData?._id, propertyId });
     if (response?.data?.code == 200) {
       Swal.fire({

@@ -20,18 +20,18 @@ function Slid() {
 
   return (<>
 
-    <div className='row slider'>
+    <div className='row slider px-5 mt-3 slider-container'>
       <div className='col-sm-8 p-0'>
         <div id="carouselExample" className="carousel slide" data-bs-ride='carousel'>
           <div className="carousel-inner">
             <div className="carousel-item active" data-bs-interval='100'>
-              <img src="/images/news slider2.jpg" className="d-block w-100 img-fluid sliderimg" alt="..." />
+              <img src="https://img.jagranjosh.com/images/2025/February/1422025/Modi-Trump-Meeting-Key-Highlights.webp" className="d-block w-100 img-fluid sliderimg" alt="..." />
             </div>
             <div className="carousel-item" data-bs-interval="100">
-              <img src="/images/news slider3.jpg" className="d-block w-100 img-fluid sliderimg" alt="..." />
+              <img src="https://staticg.sportskeeda.com/editor/2025/03/d0058-17424520356995-1920.jpg?w=640" className="d-block w-100 img-fluid sliderimg" alt="..." />
             </div>
             <div className="carousel-item" data-bs-interval="100">
-              <img src="/images/news slider.jpg" className="d-block w-100 img-fluid sliderimg" alt="..." />
+              <img src="https://feeds.abplive.com/onecms/images/uploaded-images/2025/08/03/a412c6ed5faf856800b6b88700c3296817542155413651092_original.jpg?impolicy=abp_cdn&imwidth=1200&height=675" className="d-block w-100 img-fluid sliderimg" alt="..." />
             </div>
           </div>
           <button

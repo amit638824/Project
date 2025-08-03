@@ -1,5 +1,5 @@
 import express from 'express';
-import { propertyModel, buyerModel, userModel } from '../model/table.js'
+import { propertyModel, buyerModel,ContactModel, userModel } from '../model/table.js'
 const adminRoute = express.Router();
 adminRoute.post('/add-property', async (req, res) => {
     try {
@@ -174,6 +174,43 @@ adminRoute.get('/admin-user-list', async (req, res) => {
             message: "Internal Server Error.",
             data: []
         })
+    }
+})
+adminRoute.post('/contact-us-list', async (req, res) => {
+    try {
+        const data = await ContactModel.find();
+        
+        res.json({
+            code: 200,
+            message: "Data fetched successfully",
+            data: data
+        })
+
+    } catch (err) {
+        res.json({
+            code: 500,
+            message: "Internal Server Error.",
+            data: []
+        })
+    }
+
+})
+adminRoute.post('/contact-us',async(req,res)=>{
+   const {name,email,phone,message}=req.body; 
+   const data=new ContactModel({name,email,phone,message});
+    const result=await data.save();
+    if(result){
+      res.json({
+         code:200,
+         message:"Save successfully.",
+         data:result
+      })
+    }else{
+      res.json({
+         code:400,
+         message:"Save failed!.",
+         data:''
+      })
     }
 })
 export default adminRoute;

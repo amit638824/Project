@@ -27,3 +27,14 @@ const NewsSchema = new mongoose.Schema({
 })
 
 export const newsModel = mongoose.model('news', NewsSchema);
+
+const ContactSchema = new mongoose.Schema({
+   name: { type: String },
+   email: { type: String },
+   phone: { type: String },
+   message: { type: String }, 
+   createAt: { type: Date, default: Date.now() },
+   updateAt: { type: Date, default: Date.now() },
+})
+export const contactUsModel=mongoose.model('contacts',ContactSchema)
+

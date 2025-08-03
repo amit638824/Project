@@ -27,10 +27,10 @@ function Slid() {
             <div className="carousel-item active" data-bs-interval='100'>
               <img src="/images/news slider2.jpg" className="d-block w-100 img-fluid sliderimg" alt="..." />
             </div>
-            <div className="carousel-item">
+            <div className="carousel-item" data-bs-interval="100">
               <img src="/images/news slider3.jpg" className="d-block w-100 img-fluid sliderimg" alt="..." />
             </div>
-            <div className="carousel-item">
+            <div className="carousel-item" data-bs-interval="100">
               <img src="/images/news slider.jpg" className="d-block w-100 img-fluid sliderimg" alt="..." />
             </div>
           </div>

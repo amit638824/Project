@@ -7,7 +7,8 @@ import * as yup from 'yup';
 import { useLocation } from 'react-router-dom';
 import { FaUser, FaEnvelope, FaPhone, FaComment, FaMapMarkerAlt } from 'react-icons/fa';
 import Navbar from './Navbar';
-
+import axios from 'axios';
+import Swal from 'sweetalert2';
 // Form validation schema
 const schema = yup.object().shape({
   name: yup.string().required('Name is required').min(2),
@@ -36,7 +37,21 @@ const ContactUs = () => {
     resolver: yupResolver(schema),
   });
 
-  const handleContact = () => {
+  const handleContact =async (data) => {
+   const response=await axios.post('http://localhost:9000/api/add-contact-us',data);
+   if(response?.data?.code==200){
+     Swal.fire({
+      title:"Contact US",
+      text:response?.data?.message,
+      icon:"success"
+     })
+   }else{
+    Swal.fire({
+      title:"Contact US",
+      text:response?.data?.message,
+      icon:"error"
+     })
+   }
 
   }
   return (

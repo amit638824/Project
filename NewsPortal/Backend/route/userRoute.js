@@ -1,5 +1,5 @@
 import express from 'express';
-import { userModel, newsModel } from '../model/table.js';
+import { userModel, newsModel,contactUsModel } from '../model/table.js';
 
 const router = express.Router();
 
@@ -317,4 +317,40 @@ router.post('/delete-news',async(req,res)=>{
       })
     }
 })
+router.post('/add-contact-us',async(req,res)=>{
+   const {name,email,phone,message}=req.body; 
+   const data=new contactUsModel({name,email,phone,message});
+    const result=await data.save();
+    if(result){
+      res.json({
+         code:200,
+         message:"Save successfully.",
+         data:result
+      })
+    }else{
+      res.json({
+         code:400,
+         message:"Save failed!.",
+         data:''
+      })
+    }
+})
+router.get('/get-contact-us',async(req,res)=>{ 
+    
+    const result=await contactUsModel.find();
+    if(result){
+      res.json({
+         code:200,
+         message:"Data fetched successfully.",
+         data:result
+      })
+    }else{
+      res.json({
+         code:400,
+         message:" failed!.",
+         data:''
+      })
+    }
+})
+
 export default router;

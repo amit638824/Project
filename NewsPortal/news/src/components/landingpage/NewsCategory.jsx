@@ -20,14 +20,14 @@ function NewsCategory() {
   return (
     <>
     {location?.pathname!=="/" &&  <Navbar/>}
-      <div className='row py-2'>
-        <p className='text-center fs-3'>News <b className='text-mycolor'>Category</b></p>
+      <div className='row my-5 newscategory '>
+        <p className='text-center fs-2 mb-0'>News <b className='text-mycolor'>Category</b></p>
         <div className='col-sm-10 mx-auto'>
           <div className='row py-3  d-flex justify-content-center'>
            {data?.map((item)=>{ 
             
           return(<>
-           <div onClick={()=>{localStorage.setItem("newsDetails",JSON.stringify(item));navigate('/news-details')}} className='col-sm-2 category'>
+           <div onClick={()=>{localStorage.setItem("newsDetails",JSON.stringify(item));navigate('/news-details')}} className='col-sm-3 category'>
               <a href='#'>
                 <div className="card mx-auto shadow-lg catcard border border-0">
                   <img src={item?.url} className="card-img-top img-fluid catimg" alt="..." />

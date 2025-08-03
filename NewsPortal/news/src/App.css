@@ -266,7 +266,7 @@ body{
 }
 
 .sliderimg{
-  height:500px;
+  height:600px;
 }
 .bg-mycolor{
   background:#7F0000;
@@ -278,16 +278,20 @@ body{
   color:#7F0000;
 }
 .slider{
-  min-height: 350px;
+  min-height: 600px;
 }
 .headmarquee{
   height:500px;
 }
 .headline{
-height:360px;
+height:460px;
+}
+.newscategory{
+  min-height: 350px;
 }
 .catimg{
-  height:100px;
+  height:240px;
+  width: 100%;
 }
 .catcard:hover{
   transform:scale(1.1);
@@ -299,8 +303,11 @@ height:360px;
 .category a{
   text-decoration: none;
 }
+.category{
+  min-height: 180px;
+}
 .categoryimg{
-  height:50px;
+  height:200px;
 }
 .latestimg{
   height:120px;

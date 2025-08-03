@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { IoNewspaperSharp } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
 function Slid() {
+  const navigate=useNavigate()
   const [data, setData] = useState([])
   useEffect(() => {
     fetchData()
@@ -59,7 +61,7 @@ function Slid() {
 
           {data?.map((item) => {
             return (<>
-              <div className="card mb-3 mx-auto shadow-lg border border-0">
+              <div onClick={()=>{localStorage.setItem("newsDetails",JSON.stringify(item));navigate('/news-details')}}  className="card mb-3 mx-auto shadow-lg border border-0">
                 <div className="row g-0">
                   <div className="col-md-4">
                     {item?.type == 'image' ?
@@ -95,7 +97,7 @@ function Slid() {
 
             </>)
           })}
-
+{ data?.length==0 && <h3 className='text-center'>No Record Found</h3>}
         </marquee>
       </div>
     </div>

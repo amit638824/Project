@@ -18,15 +18,12 @@ function Home() {
     <>
       <Navbar />
       <Slider />
-      <NewsCategory />
-      <NewsDetails /> 
+      <NewsCategory /> 
       <LatestNews />
       <LatestVideos />
       < City />
-      <ImageGallery />
-      <ContactUs />
-      < About />
-      <TopNews />
+      <ImageGallery /> 
+      < About /> 
       <Footer />
 
 

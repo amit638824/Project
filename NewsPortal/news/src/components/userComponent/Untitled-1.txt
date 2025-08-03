@@ -1,7 +1,0 @@
-
-title -
-desc -
-type video/img
-media  
-category  -dropDown -> sports politics  crime health 
-location

@@ -327,3 +327,17 @@ height:360px;
   height:50px;
   background:black;
 }
+
+.category_latest_news{
+  min-height: 392px;
+}
+.video_div{
+ height: 200px;
+}
+.video_div_detail{
+   height: 400px; 
+}
+
+.des-dtails{
+  min-height: 400px;
+}

@@ -111,7 +111,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/add-news', async (req, res) => {
    try {
-      const { title, category, type, url, desc, userId } = req.body;
+      const { title, category, city, type, url, desc, userId } = req.body;
       const isExist = await newsModel.findOne({ title });
       if (isExist) {
          res.json({
@@ -120,7 +120,7 @@ router.post('/add-news', async (req, res) => {
             data: isExist
          })
       } else {
-         const data = new newsModel({ title, category, type, url, desc, userId });
+         const data = new newsModel({ title, category, type, city, url, desc, userId });
          const result = await data.save();
          res.json({
             code: 200,
@@ -215,7 +215,7 @@ router.put("/admin-news-approved", async (req, res) => {
 
 router.get('/top-ten-news', async (req, res) => {
    try {
-      const result = await newsModel.find({ type: "image" }).sort({ createAt: -1 }).limit(10);
+      const result = await newsModel.find({ type: "image", isApproved: true }).sort({ createAt: -1 }).limit(10);
       res.json({
          code: 200,
          message: "Data fetched successfully",
@@ -233,7 +233,59 @@ router.get('/top-ten-news', async (req, res) => {
 
 router.get('/top-category', async (req, res) => {
    try {
-      const result = await newsModel.distinct({ category })
+      const result = await newsModel.find({ type: "image", isApproved: true }).sort({ createAt: -1 })
+      const seen = new Set();
+      const uniqueArray = result?.filter((item) => {
+         if (!seen.has(item?.category)) {
+            seen.add(item?.category)
+            return true;
+         }
+         return false
+      }).slice(0,6)
+      res.json({
+         code: 200,
+         message: "Data fetched successfully",
+         data: uniqueArray
+      })
+
+   } catch (err) {
+      res.json({
+         code: 500,
+         message: "Internal Server Error",
+         data: ""
+      })
+   }
+})
+router.get('/top-city', async (req, res) => {
+   try {
+      const result = await newsModel.find({ type: "image", isApproved: true }).sort({ createAt: -1 })
+      const seen = new Set();
+      const uniqueArray = result?.filter((item) => {
+         if (!seen.has(item?.city)) {
+            seen.add(item?.city)
+            return true;
+         }
+         return false
+      })
+      res.json({
+         code: 200,
+         message: "Data fetched successfully",
+         data: uniqueArray
+      })
+
+   } catch (err) {
+      res.json({
+         code: 500,
+         message: "Internal Server Error",
+         data: ""
+      })
+   }
+})
+
+router.get('/top-video', async (req, res) => {
+   try {
+      const result = await newsModel.find({ type: "video", isApproved: true }).sort({ createAt: -1 }); 
+     
       res.json({
          code: 200,
          message: "Data fetched successfully",
@@ -248,5 +300,21 @@ router.get('/top-category', async (req, res) => {
       })
    }
 })
-
+router.post('/delete-news',async(req,res)=>{
+   const {_id}=req.body;
+   const result=  await newsModel.findByIdAndDelete({_id:_id});
+    if(result){
+      res.json({
+         code:200,
+         message:"News Deleted Successfully",
+         data:result
+      })
+    }else{
+      res.json({
+         code:400,
+         message:"News Deleted failed",
+         data:result
+      })
+    }
+})
 export default router;

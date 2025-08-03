@@ -30,7 +30,7 @@ if(userInfo?.userType=="user"){
       <nav className="navbar navbar-expand-lg bg-body-tertiary" >
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            News Portal
+           News Times 
           </Link>
           <button
             className="navbar-toggler"
@@ -44,7 +44,13 @@ if(userInfo?.userType=="user"){
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0"> 
+               <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/user-alllist">
+                   All News
+                </Link>
+              </li>
               <li className="nav-item" >
+                
                 <Link className="nav-link active" aria-current="page" to="/user-profile">
                    Profile
                 </Link>
@@ -59,11 +65,7 @@ if(userInfo?.userType=="user"){
                    Your News
                 </Link>
               </li>
-               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/user-alllist">
-                   All News
-                </Link>
-              </li>
+              
               <li className="nav-item" onClick={logOut}>
                 <Link className="nav-link active" aria-current="page" >
                   Logout
@@ -81,7 +83,7 @@ if(userInfo?.userType=="user"){
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            News Portal
+           News Times 
           </Link>
           <button
             className="navbar-toggler"
@@ -94,17 +96,19 @@ if(userInfo?.userType=="user"){
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0"> 
-              <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/admin-profile">
-                   Profile
-                </Link>
-              </li>
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/admin-newslist">
                    News
                 </Link>
               </li> 
+              <li className="nav-item">
+                  
+                <Link className="nav-link active" aria-current="page" to="/admin-profile">
+                   Profile
+                </Link>
+              </li>
+             
                <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/admin-ContactUS">
                    ContactUs
@@ -127,7 +131,7 @@ if(userInfo?.userType=="user"){
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            News Portal 
+           News Times  
           </Link>
           <button
             className="navbar-toggler"
@@ -150,14 +154,7 @@ if(userInfo?.userType=="user"){
                 <Link className="nav-link" to="/about">
                   < FcAbout /> About
                 </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link className="nav-link" to="/news">
-                  <IoNewspaper /> News
-                </Link>
-              </li>
-
+              </li> 
               <li className="nav-item">
                 <Link className="nav-link" to="/gallery">
                   <GrGallery /> Gallery
@@ -169,18 +166,7 @@ if(userInfo?.userType=="user"){
                 <Link className="nav-link" to="/contact">
                   < IoIosContacts /> Contact
                 </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/blog">
-                  < FaBlog /> Blog
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link className="nav-link" to="/feedback">
-                  <FcFeedback /> Feedback
-                </Link>
-              </li>
+              </li> 
               <li className="nav-item">
                 <Link className="nav-link" to="/UserSignUp">
                   <MdOutlineAppRegistration />  UserSignUp

@@ -32,9 +32,9 @@ const Login = () => {
       localStorage.setItem("userInfo", JSON.stringify(response?.data?.data)); 
 
       if (response?.data?.data?.userType == "user") {
-        navigate('/user-profile')
+        navigate('/user-alllist')
       } else if (response?.data?.data?.userType == "admin") {
-        navigate('/admin-profile')
+        navigate('/admin-newslist')
       }
 
     } else {

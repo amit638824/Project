@@ -31,12 +31,12 @@ function App() {
         {/*landing navbar*/}
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/about' element={<NewsCategory />} />
-        <Route path='/news' element={<NewsDetails />} />
+        <Route path='/about' element={<NewsCategory />} /> 
         <Route path='/gallery' element={<ImageGallery />} />
         <Route path='/contact' element={<ContactUs />} /> 
         <Route path='/UserSignUp' element={<UserSignUp />} />
         <Route path='/login' element={<Login/>} />
+        <Route path='/news-details' element={<NewsDetails/>}/>
 
         {/*admin route*/}
         <Route path='/admin-profile' element={<EditProfile />} />

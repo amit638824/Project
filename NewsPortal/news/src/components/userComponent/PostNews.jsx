@@ -12,6 +12,7 @@ const Newsschema = yup
   .shape({
     title: yup.string().required().min(2).max(20),
     category: yup.string().required(),
+     city: yup.string().required(),
     type: yup.string().required(),
     url: yup.string().required(),
     desc: yup.string().required().min(2).max(1000),
@@ -72,6 +73,13 @@ const PostNews = () => {
                         <option value="sports">sports</option>
                       </select>
                       {errors?.category && <p className='text-danger'>{errors?.category?.message}</p>}
+                    </div>
+                  </div>
+                   <div className="row my-3">
+                    <div className="col-3 pt-2">City</div>
+                    <div className="col-9">
+                      <input type='text' {...register('city')} placeholder='Enter the City Name' className='form-control'/>  
+                      {errors?.city && <p className='text-danger'>{errors?.city?.message}</p>}
                     </div>
                   </div>
                   <div className="row my-3">

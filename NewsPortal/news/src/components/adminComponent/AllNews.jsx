@@ -15,7 +15,7 @@ const AllNews = () => {
       setNewsList(response?.data?.data)
     }
   }
-  const handleApproval = async (id, status) => { 
+  const handleApproval = async (id, status) => {
     const response = await axios.put('http://localhost:9000/api/admin-news-approved', { _id: id, isApproved: !status });
     if (response?.data?.code == 200) {
       Swal.fire({
@@ -32,9 +32,38 @@ const AllNews = () => {
       })
     }
   }
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const response = await axios.post('http://localhost:9000/api/delete-news', { _id });
+        if (response?.data?.code == 200) {
+          Swal.fire({
+            title: "News Delete",
+            text: response?.data?.message,
+            icon: "success"
+          })
+          fetchData()
+        }else{
+           Swal.fire({
+            title: "News Delete",
+            text: response?.data?.message,
+            icon: "error"
+          })
+        }
+      }
+    });
+  }
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="row mt-3">
         <div className="col-sm-1"></div>
         <div className="col-sm-10">
@@ -44,6 +73,7 @@ const AllNews = () => {
               <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Category</th>
+                <th scope="col">City</th>
                 <th scope="col">Media</th>
                 <th scope="col">Description</th>
                 <th scope="col">Status</th>
@@ -56,19 +86,33 @@ const AllNews = () => {
                   <tr>
                     <th >{item?.title}</th>
                     <td>{item?.category}</td>
-                    <td><img height='60' width='100' src={item?.url} /></td>
+                    <td>{item?.city}</td>
+                    <td>{
+                      item?.type == "image" ? <img height='60' width='100' src={item?.url} /> :
+                        <iframe
+                          height='60' width='100'
+                          src={item?.url}
+                          title="YouTube video player"
+                          frameBorder={0}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen=""
+                        />
+                    }</td>
                     <td>{item?.desc?.slice(0, 15)}...</td>
                     <td>{item?.isApproved ? "Approved" : "Not Approved!"}</td>
-                    <td> 
-                      <button onClick={() => handleApproval(item?._id, item?.isApproved)} className='btn btn-outline-danger  '>{item?.isApproved ? "No" : "Yes"}</button>
+                    <td>
+                      <button onClick={() => handleApproval(item?._id, item?.isApproved)} className='btn btn-warning  '>{item?.isApproved ? "No" : "Yes"}</button>
+                      <button onClick={() => handleDelete(item?._id)} className='ms-1 btn btn-danger'>Delete</button>
+
                     </td>
                   </tr>
                 </>)
               })}
-              
+
             </tbody>
           </table>
-          {newsList?.length==0 && <h3 className='text-center'>No Records Found</h3>}
+          {newsList?.length == 0 && <h3 className='text-center'>No Records Found</h3>}
         </div>
         <div className="col-sm-1"></div>
       </div>

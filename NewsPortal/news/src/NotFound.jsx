@@ -1,10 +1,5 @@
-import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-const NotFound = () => {
-    const nav=useNavigate()
-    useEffect(()=>{
-nav('/login')
-    })
+import React, { useEffect } from 'react';
+const NotFound = () => { 
   return (
     <div>NotFound</div>
   )

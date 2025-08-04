@@ -25,12 +25,12 @@ import Footer from './components/landingpage/Footer';
 import NotFound from './NotFound';
 import { useEffect, useState } from 'react';
 function App() {
-  // const location=useLocation()
+  const location=useLocation()
   const [user, setData] = useState(null)
   useEffect(() => {
     const dataUser = JSON.parse(localStorage.getItem('userInfo'));
     setData(dataUser);
-  }, [ ])
+  }, [location])
 
 
   return (<>

@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const Newsschema = yup
   .object()
   .shape({
-    title: yup.string().required().min(2).max(20),
+    title: yup.string().required().min(2).max(50),
     category: yup.string().required(),
      city: yup.string().required(),
     type: yup.string().required(),

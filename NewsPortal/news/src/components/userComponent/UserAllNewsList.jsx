@@ -42,6 +42,25 @@ const UserAllNewsList = () => {
             </thead>
             <tbody>
               {newsList?.map((item, index) => {
+                 const getEmbedUrl = (url) => {
+                  try {
+                    // Check for short youtu.be URLs
+                    if (url.includes("youtu.be")) {
+                      const id = url.split("youtu.be/")[1].split("?")[0];
+                      return `https://www.youtube.com/embed/${id}`;
+                    }
+
+                    // Check for normal youtube.com/watch?v=... URLs
+                    if (url.includes("youtube.com/watch?v=")) {
+                      const id = url.split("watch?v=")[1].split("&")[0];
+                      return `https://www.youtube.com/embed/${id}`;
+                    }
+
+                    return url; // fallback (might be image or other type)
+                  } catch (error) {
+                    return url;
+                  }
+                };
                 return (<>
                   <tr>
                     <th >{item?.title}</th>
@@ -51,7 +70,7 @@ const UserAllNewsList = () => {
                       item?.type == "image" ? <img height='60' width='100' src={item?.url} /> :
                         <iframe
                           height='60' width='100'
-                          src={item?.url}
+                          src={getEmbedUrl(item?.url)}
                           title="YouTube video player"
                           frameBorder={0}
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

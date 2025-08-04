@@ -42,28 +42,54 @@ const YourNews = () => {
             </thead>
             <tbody>
               {newsList?.map((item, index) => {
-                return (<>
-                  <tr>
-                    <th >{item?.title}</th>
+                const getEmbedUrl = (url) => {
+                  try {
+                    // Check for short youtu.be URLs
+                    if (url.includes("youtu.be")) {
+                      const id = url.split("youtu.be/")[1].split("?")[0];
+                      return `https://www.youtube.com/embed/${id}`;
+                    }
+
+                    // Check for normal youtube.com/watch?v=... URLs
+                    if (url.includes("youtube.com/watch?v=")) {
+                      const id = url.split("watch?v=")[1].split("&")[0];
+                      return `https://www.youtube.com/embed/${id}`;
+                    }
+
+                    return url; // fallback (might be image or other type)
+                  } catch (error) {
+                    return url;
+                  }
+                };
+
+                return (
+                  <tr key={index}>
+                    <th>{item?.title}</th>
                     <td>{item?.category}</td>
                     <td>{item?.city}</td>
-                    <td>{
-                      item?.type == "image" ? <img height='60' width='100' src={item?.url} /> :
+                    <td>
+                      {item?.type === "image" ? (
+                        <img height="60" width="100" src={item?.url} alt="news" />
+                      ) : (
                         <iframe
-                          height='60' width='100'
-                          src={item?.url}
+                          height="60"
+                          width="100"
+                          src={getEmbedUrl(item?.url)}
                           title="YouTube video player"
-                          frameBorder={0}
+                          frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                           referrerPolicy="strict-origin-when-cross-origin"
-                          allowFullScreen=""
-                        />
-                    }</td>
-
-                    <td onClick={() => showDescription(item?.desc)} >{item?.desc?.slice(0, 15)}...</td>
+                          allowFullScreen
+                        ></iframe>
+                      )}
+                    </td>
+                    <td onClick={() => showDescription(item?.desc)}>
+                      {item?.desc?.slice(0, 15)}...
+                    </td>
                   </tr>
-                </>)
+                );
               })}
+
             </tbody>
           </table>
           {newsList?.length == 0 && <h3 className='text-center'>No Records Found</h3>}

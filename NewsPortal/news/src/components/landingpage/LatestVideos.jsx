@@ -26,13 +26,32 @@ function LatestVideos() {
         <div className='col-sm-10 mx-auto'>
           <div className='row py-3  d-flex justify-content-center'>
             {data?.map((item) => { 
+               const getEmbedUrl = (url) => {
+                  try {
+                    // Check for short youtu.be URLs
+                    if (url.includes("youtu.be")) {
+                      const id = url.split("youtu.be/")[1].split("?")[0];
+                      return `https://www.youtube.com/embed/${id}`;
+                    }
+
+                    // Check for normal youtube.com/watch?v=... URLs
+                    if (url.includes("youtube.com/watch?v=")) {
+                      const id = url.split("watch?v=")[1].split("&")[0];
+                      return `https://www.youtube.com/embed/${id}`;
+                    }
+
+                    return url; // fallback (might be image or other type)
+                  } catch (error) {
+                    return url;
+                  }
+                };
               return (<>
                 <div onClick={()=>{localStorage.setItem("newsDetails",JSON.stringify(item));navigate('/news-details')}}  className='col-sm-2  mb-3'>
                   <a href='#'>
                     <div className="card mx-auto shadow-lg catcard border border-0 ">
                       <iframe
                         className='video_div'
-                        src={item?.url}
+                       src={getEmbedUrl(item?.url)}
                         title="YouTube video player"
                         frameBorder={0}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

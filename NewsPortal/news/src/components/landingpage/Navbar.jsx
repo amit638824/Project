@@ -27,7 +27,7 @@ function Navbar() {
   if (userInfo?.userType == "user") {
     return (
       <>
-        <div className='w-100 d-flex d-flex justify-content-center align-items-center'>
+        <div className='w-100 d-flex d-flex justify-content-center align-items-center ' style={{backgroundColor : "whitesmoke"}}>
           <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
               <button
@@ -42,9 +42,14 @@ function Navbar() {
               </button>
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 navbarUl">
+                   <li className="nav-item">
+                    <Link className="nav-link fs-5 active" aria-current="page" to="/">
+                      <FaHome /> Home
+                    </Link>
+                  </li>
                   <li className="nav-item">
                     <Link className="nav-link fs-5 active" aria-current="page" to="/user-alllist">
-                      <FaHome /> All News
+                      <IoNewspaper /> All News
                     </Link>
                   </li>
                   <li className="nav-item">
@@ -78,7 +83,7 @@ function Navbar() {
   } else if (userInfo?.userType == "admin") {
     return (
       <>
-        <div className='w-100 d-flex d-flex justify-content-center align-items-center'>
+        <div className='w-100 d-flex d-flex justify-content-center align-items-center' style={{backgroundColor : "whitesmoke"}}>
           <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
               <button
@@ -93,9 +98,14 @@ function Navbar() {
               </button>
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 navbarUl">
+                   <li className="nav-item">
+                    <Link className="nav-link fs-5 active" aria-current="page" to="/">
+                      <FaHome /> Home
+                    </Link>
+                  </li>
                   <li className="nav-item">
                     <Link className="nav-link fs-5 active" aria-current="page" to="/admin-newslist">
-                      <FaHome /> News
+                      <IoNewspaper /> News
                     </Link>
                   </li>
                   <li className="nav-item">
@@ -127,7 +137,7 @@ function Navbar() {
   } else {
     return (
       <>
-        <div className='w-100 d-flex d-flex justify-content-center align-items-center'>
+        <div className='w-100 d-flex d-flex justify-content-center align-items-center' style={{backgroundColor : "whitesmoke"}}>
           <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
               {/* <Link className="navbar-brand" to="/">

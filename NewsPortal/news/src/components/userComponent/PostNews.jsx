@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Navbar from '../landingpage/Navbar';
-import axios from 'axios'; 
+import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 const Newsschema = yup
@@ -12,14 +12,14 @@ const Newsschema = yup
   .shape({
     title: yup.string().required().min(2).max(50),
     category: yup.string().required(),
-     city: yup.string().required(),
+    city: yup.string().required(),
     type: yup.string().required(),
     url: yup.string().required(),
     desc: yup.string().required().min(2).max(1000),
   })
 const PostNews = () => {
-  const Navigate=useNavigate();
-  const { register, handleSubmit,reset, formState: { errors } } = useForm({
+  const Navigate = useNavigate();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
     resolver: yupResolver(Newsschema),
   });
   const handleAddNews = async (data) => {
@@ -68,17 +68,24 @@ const PostNews = () => {
                     <div className="col-3 pt-2">Category</div>
                     <div className="col-9">
                       <select {...register('category')} className='form-control form-dropdown'>
-                        <option value="politics">politics</option>
-                        <option value="education">education</option>
-                        <option value="sports">sports</option>
+                        <option value="crime">Crime</option>
+                        <option value="politics">Politics</option>
+                        <option value="education">Education</option>
+                        <option value="sports">Sports</option>
+                        <option value="technology">Technology</option>
+                        <option value="health">Health</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="business">Business</option>
+                        <option value="environment">Environment</option>
+
                       </select>
                       {errors?.category && <p className='text-danger'>{errors?.category?.message}</p>}
                     </div>
                   </div>
-                   <div className="row my-3">
+                  <div className="row my-3">
                     <div className="col-3 pt-2">City</div>
                     <div className="col-9">
-                      <input type='text' {...register('city')} placeholder='Enter the City Name' className='form-control'/>  
+                      <input type='text' {...register('city')} placeholder='Enter the City Name' className='form-control' />
                       {errors?.city && <p className='text-danger'>{errors?.city?.message}</p>}
                     </div>
                   </div>

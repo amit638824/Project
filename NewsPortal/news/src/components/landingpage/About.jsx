@@ -1,52 +1,103 @@
-import React from 'react';
-import Navbar from './Navbar';
-import {useLocation} from 'react-router-dom'
-const About = () => {
- const location=useLocation() 
- 
-  return (
-<>
-{location?.pathname!=="/" && <Navbar/> }
+import React, { useEffect } from "react";
+import Navbar from "./Navbar";
+import { useLocation } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-<div className='row py-2'>
-  <p className='fs-3 text-center'>About <b className='text-mycolor'>Us</b></p>
-  <div className='col-sm-10 mx-auto'>
-    <div className='row py-3'>
-      <div className='col-sm-6 pt-3'>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, perspiciatis error totam facilis ducimus provident velit, iusto magni voluptatibus qui ea. Ullam omnis vitae beatae officia expedita libero commodi id?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim sapiente eum asperiores iusto obcaecati accusamus ea esse alias doloribus quia nostrum, vero reiciendis necessitatibus atque ad quibusdam quod praesentium accusantium!</p>
-      </div>
-      <div className='col-sm-6'>
-        <iframe className='w-100' height="315" src="https://www.youtube.com/embed/by80uSmUvpM?si=eGuI3ojvfgLOdgR5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-    </div>
-    <div className='row'>
-      <div className='col-sm-4'>
-        <img src='/images/headline1.jpg' className='img-thumbnail aboutimg w-100' />
-      </div>
-      <div className='col-sm-8 pt-2'>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas nisi est architecto. Aspernatur mollitia, ducimus ratione pariatur at non ea. Non labore eveniet numquam vitae, facilis nihil asperiores nulla eos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit alias eaque molestiae blanditiis quibusdam cumque assumenda porro, similique sunt modi iure fugiat pariatur maiores, esse vero magni doloremque vitae odit!</p>
-      </div>
-      <div className='row'>
-        <div className='col-sm-12'>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad enim earum sunt provident velit iusto quaerat exercitationem commodi totam fugiat quae repellat nisi doloribus, at in tempore molestiae? Enim.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sit maiores nisi expedita nam voluptatem quia quae? Corporis sapiente odit recusandae illum quaerat eveniet nihil pariatur, incidunt rerum, aut est?
-          </p>
+const About = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
+  return (
+    <>
+      {location?.pathname !== "/" && <Navbar />}
+
+      <div className="container-fluid bg-light py-5">
+        <div className="row">
+            <div className="text-center mb-2">
+                <p className="fs-2 fw-semibold mb-2">
+                  About <span className="text-mycolor">News Times</span>
+                </p>
+                <hr className="heading-decoration" />
+              </div>
+
+          <div className="col-sm-10 mx-auto">
+            <div className="row align-items-center mb-5" data-aos="fade-right">
+              <div className="col-md-6">
+                <p>
+                  <strong>News Times</strong> is a forward-thinking digital news
+                  hub committed to accuracy, depth, and transparency. From
+                  breaking headlines to in-depth analyses, we cover stories that
+                  matter — across politics, science, culture, tech, and the
+                  world.
+                </p>
+                <p>
+                  We believe informed citizens build stronger societies. That’s
+                  why our stories aim to inspire, question, and empower.
+                </p>
+              </div>
+              <div className="col-md-6" data-aos="zoom-in">
+                <div className="ratio ratio-16x9 shadow-sm rounded">
+                  <iframe
+                    src="https://www.youtube.com/embed/by80uSmUvpM?si=eGuI3ojvfgLOdgR5"
+                    title="News Times Introduction"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div className="row align-items-center mb-5" data-aos="fade-left">
+              <div className="col-md-4 mb-3">
+                <img
+                  src="/images/headline1.jpg"
+                  className="img-fluid rounded shadow-sm"
+                  alt="Newsroom"
+                />
+              </div>
+              <div className="col-md-8">
+                <p>
+                  With a dedicated team of journalists, designers, developers,
+                  and editors, we produce original content with a global
+                  perspective. We’re driven by curiosity, fact-based
+                  storytelling, and a sense of responsibility to our readers.
+                </p>
+                <p>
+                  Community matters. Our platform lets you interact, share, and
+                  discuss stories that affect us all.
+                </p>
+              </div>
+            </div>
+
+            {/* Vision & Mission */}
+            <div className="row py-4 text-center" data-aos="zoom-in">
+              <div className="text-center mb-2">
+                <p className="fs-2 fw-semibold mb-2">
+                  Vision <span className="text-mycolor">& Mission</span>
+                </p>
+                <hr className="heading-decoration" />
+              </div>
+              <div className="col-12">
+                <p>
+                  <strong>Vision:</strong> To redefine global journalism through
+                  integrity and impact.
+                </p>
+                <p>
+                  <strong>Mission:</strong> To keep truth at the core of every
+                  story, while educating, engaging, and empowering readers
+                  across borders.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <hr />
-    <div className='row py-3'>
-      <p className='fs-3 text-center '>Our Vision <b className='text-mycolor'>& Mission</b></p>
-      <div className='col-sm-12'>
-        <p className='text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis architecto voluptatem molestiae veniam, deleniti labore a similique ipsa iste? Consectetur iusto, sed officiis facilis officia quasi adipisci dolorem impedit repudiandae!</p>
-      </div>
-     
-    </div>
-  </div>
-</div>
-</>
-  )
-}
-export default About
- 
+    </>
+  );
+};
+
+export default About;

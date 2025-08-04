@@ -48,7 +48,7 @@ function LatestVideos() {
               return (<>
                 <div onClick={()=>{localStorage.setItem("newsDetails",JSON.stringify(item));navigate('/news-details')}}  className='col-sm-2  mb-3'>
                   <a href='#'>
-                    <div className="card mx-auto shadow-lg catcard border border-0 ">
+                    <div  data-aos="zoom-in" className="card mx-auto shadow-lg catcard border border-0 ">
                       <iframe
                         className='video_div'
                        src={getEmbedUrl(item?.url)}

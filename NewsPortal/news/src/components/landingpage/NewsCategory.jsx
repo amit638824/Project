@@ -1,51 +1,80 @@
-import React ,{useState,useEffect} from 'react'
-import Navbar from './Navbar'
-import   {useLocation,useNavigate} from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import Navbar from "./Navbar";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function NewsCategory() {
-  const location=useLocation();
-  const navigate=useNavigate()
- const [data, setData] = useState([])
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
+
   useEffect(() => {
-    fetchData()
-  }, [])
+    AOS.init({ duration: 1000, once: true });
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const fetchData = async () => {
-    const response = await axios.get('http://localhost:9000/api/top-category');
-    if (response?.data?.code == 200) {
-      setData(response?.data?.data)
+    const response = await axios.get("http://localhost:9000/api/top-category");
+    if (response?.data?.code === 200) {
+      setData(response?.data?.data);
     }
-  }
- 
+  };
+
   return (
     <>
-    {location?.pathname!=="/" &&  <Navbar/>}
-      <div className='row my-5 newscategory '>
-        <p className='text-center fs-2 mb-0'>News <b className='text-mycolor'>Category</b></p>
-        <div className='col-sm-10 mx-auto'>
-          <div className='row py-3  d-flex justify-content-center'>
-           {data?.map((item)=>{ 
-            
-          return(<>
-           <div onClick={()=>{localStorage.setItem("newsDetails",JSON.stringify(item));navigate('/news-details')}} className='col-sm-3 category'>
-              <a href='#'>
-                <div className="card mx-auto shadow-lg catcard border border-0">
-                  <img src={item?.url} className="card-img-top img-fluid catimg" alt="..." />
-                  <div className="card-body">
-                    <h6 className="card-title text-center m-0">{item?.category}</h6>
+      {location?.pathname !== "/" && <Navbar />}
+
+      <div className="container-fluid py-4 bg-light">
+        <div className="text-center mb-4">
+          <p className="fs-2 fw-semibold mb-2">
+            News <b className="text-mycolor">Category</b>
+          </p>
+          <hr className="heading-decoration" />
+        </div>
+
+        <div className="container-fluid px-5">
+          <div className="row g-4 justify-content-center">
+            {data?.map((item, index) => (
+              <div
+                key={index}
+                className="col-6 col-md-4 col-lg-3 catcard"
+                data-aos="zoom-in"
+                data-aos-delay={index * 100}
+                onClick={() => {
+                  localStorage.setItem("newsDetails", JSON.stringify(item));
+                  navigate("/news-details");
+                }}
+              >
+                <div className="card h-100 shadow-sm border-0">
+                  <img
+                    src={item?.url}
+                    className="card-img-top img-fluid"
+                    style={{ height: "180px", objectFit: "cover" }}
+                    alt={item?.category}
+                  />
+                  <div className="card-body p-2">
+                    <h6 className="card-title text-center m-0">
+                      {item?.category}
+                    </h6>
                   </div>
                 </div>
-              </a> 
-            </div>
-          </>)
-           })}
-           
-           { data?.length==0 && <h3 className='text-center'>No Record Found</h3>}
-            
+              </div>
+            ))}
+            {data?.length === 0 && (
+              <h4 className="text-center mt-4" data-aos="fade-up">
+                No Record Found
+              </h4>
+            )}
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
-export default NewsCategory
+
+export default NewsCategory;

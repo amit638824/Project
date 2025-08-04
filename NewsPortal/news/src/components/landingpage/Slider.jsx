@@ -2,8 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { IoNewspaperSharp } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
+import img1 from '../../assets/slider-img1.webp'
+import img2 from '../../assets/slider-img2.avif'
+import img3 from '../../assets/slider-img3.jpg'
+
 function Slid() {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const [data, setData] = useState([])
   useEffect(() => {
     fetchData()
@@ -16,52 +20,41 @@ function Slid() {
     }
   }
 
-  console.log(data, "4567890");
 
   return (<>
 
     <div className='row slider px-5 mt-3 slider-container'>
-      <div className='col-sm-8 p-0'>
-        <div id="carouselExample" className="carousel slide" data-bs-ride='carousel'>
-          <div className="carousel-inner">
-            <div className="carousel-item active" data-bs-interval='100'>
-              <img src="https://img.jagranjosh.com/images/2025/February/1422025/Modi-Trump-Meeting-Key-Highlights.webp" className="d-block w-100 img-fluid sliderimg" alt="..." />
-            </div>
-            <div className="carousel-item" data-bs-interval="100">
-              <img src="https://staticg.sportskeeda.com/editor/2025/03/d0058-17424520356995-1920.jpg?w=640" className="d-block w-100 img-fluid sliderimg" alt="..." />
-            </div>
-            <div className="carousel-item" data-bs-interval="100">
-              <img src="https://feeds.abplive.com/onecms/images/uploaded-images/2025/08/03/a412c6ed5faf856800b6b88700c3296817542155413651092_original.jpg?impolicy=abp_cdn&imwidth=1200&height=675" className="d-block w-100 img-fluid sliderimg" alt="..." />
-            </div>
-          </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="prev"
-          >
-            <span className="carousel-control-prev-icon" aria-hidden="true" />
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="next"
-          >
-            <span className="carousel-control-next-icon" aria-hidden="true" />
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
-
+   <div className='col-sm-8 p-0'>
+  <div id="carouselExample" className="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div className="carousel-inner">
+      <div className="carousel-item active" data-bs-interval="2000">
+        <img src={img1} className="d-block w-100 img-fluid sliderimg" alt="..." />
       </div>
+      <div className="carousel-item" data-bs-interval="2000">
+        <img src={img2} className="d-block w-100 img-fluid sliderimg" alt="..." />
+      </div>
+      <div className="carousel-item" data-bs-interval="2000">
+        <img src={img3} className="d-block w-100 img-fluid sliderimg" alt="..." />
+      </div>
+    </div>
+    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span className="carousel-control-prev-icon" aria-hidden="true" />
+      <span className="visually-hidden">Previous</span>
+    </button>
+    <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span className="carousel-control-next-icon" aria-hidden="true" />
+      <span className="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
       <div className='col-sm-4 headmarquee'>
         <h3 className='text-center bg-light'>Top 10 News <b className='text-mycolor'>Headline</b></h3>
         <marquee direction="up" className='headline' behavior="alternate">
 
           {data?.map((item) => {
             return (<>
-              <div onClick={()=>{localStorage.setItem("newsDetails",JSON.stringify(item));navigate('/news-details')}}  className="card mb-3 mx-auto shadow-lg border border-0">
+              <div onClick={() => { localStorage.setItem("newsDetails", JSON.stringify(item)); navigate('/news-details') }} className="card mb-3 mx-auto shadow-lg border border-0">
                 <div className="row g-0">
                   <div className="col-md-4">
                     {item?.type == 'image' ?
@@ -97,7 +90,7 @@ function Slid() {
 
             </>)
           })}
-{ data?.length==0 && <h3 className='text-center'>No Record Found</h3>}
+          {data?.length == 0 && <h3 className='text-center'>No Record Found</h3>}
         </marquee>
       </div>
     </div>

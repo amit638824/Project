@@ -56,15 +56,15 @@ const Login = () => {
       <div className="d-flex justify-content-center align-items-center vh-50 mx-auto mt-5" style={{ width: "100%", marginLeft: "230px", height: "400px" }}>
         <div className="card p-4 shadow " style={{ width: "600px", minHeight: "350px" }}>
           <h3 className="text-center mb-4">
-            <span className="text-danger fw-bold">Login</span>
+            <span className="headingText fw-bold">Login</span>
           </h3>
 
           <form onSubmit={handleSubmit((d) => handleLogin(d))}>
             <div className="mb-3">
-              <label className="form-label">E-mail</label>
+              <label className="form-label fw-bold">E-mail</label>
               <input
                 type="email"
-                className="form-control"
+                className="form-control "
                 placeholder="Enter your email"
                 {...register('email')}
               />
@@ -72,7 +72,7 @@ const Login = () => {
             </div>
 
             <div className="mb-4">
-              <label className="form-label">Password</label>
+              <label className="form-label fw-bold">Password</label>
               <input
                 type="password"
                 className="form-control"
@@ -81,7 +81,7 @@ const Login = () => {
               />
               {errors.password && <p className='text-danger'>{errors.password?.message}</p>}
             </div>
-            <input type="submit" className="btn btn-danger w-100 mb-3" value="Login" />
+            <input type="submit" className="btn themeBtn text-light w-100 mb-3" value="Login" />
 
 
           </form>

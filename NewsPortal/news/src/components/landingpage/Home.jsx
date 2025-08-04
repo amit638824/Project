@@ -24,11 +24,6 @@ function Home() {
       < City />
       <ImageGallery /> 
       < About /> 
-      <Footer />
-
-
-
-
     </>)
 }
 

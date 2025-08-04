@@ -1,16 +1,3 @@
-// import React from 'react'
-// import Navbar from '../landingpage/Navbar'
-// const UserEditProfile = () => {
-//   return (
-//    <>
-//    <Navbar/>
-//    EditProfile
-
-//    </>
-//   )
-// }
-
-// export default UserEditProfile
 import React, { useEffect } from 'react'
 import Navbar from '../landingpage/Navbar';
 import { FaUser, FaEnvelope, FaPhone, FaLock, FaImage } from "react-icons/fa";
@@ -92,8 +79,9 @@ const UserEditProfile = () => {
     <>
       <Navbar />
       <div className="d-flex justify-content-center align-items-center  mt-5 t">
-        <div className="bg-white p-4 rounded shadow" style={{ width: "900px" }}>
-          <h2 className="text-center text-danger mb-4">UserProfile</h2>
+        <div className="bg-white p-4 rounded shadow mx-auto" style={{ width: "900px" }}>
+          <h2 className="text-center text-primary headingText fw-bold mb-4">User Profile</h2>
+         <p className='text-center'> <hr className='w-50 text-center' /></p>
           <form onSubmit={handleSubmit((d) => handleUserRegister(d))}>
             <div className="row g-3">
               {/* Name */}

@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 const NotFound = () => {
     const nav=useNavigate()
     useEffect(()=>{
-// nav('/login')
+nav('/login')
     })
   return (
-    <div className='text-center text-mycolor'>NotFound</div>
+    <div>NotFound</div>
   )
 }
 

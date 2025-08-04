@@ -10,7 +10,25 @@ function NewsDetails() {
         setData(raw)
     }, [])
     const location = useLocation();
+  const getEmbedUrl = (url) => {
+                  try {
+                    // Check for short youtu.be URLs
+                    if (url.includes("youtu.be")) {
+                      const id = url.split("youtu.be/")[1].split("?")[0];
+                      return `https://www.youtube.com/embed/${id}`;
+                    }
 
+                    // Check for normal youtube.com/watch?v=... URLs
+                    if (url.includes("youtube.com/watch?v=")) {
+                      const id = url.split("watch?v=")[1].split("&")[0];
+                      return `https://www.youtube.com/embed/${id}`;
+                    }
+
+                    return url; // fallback (might be image or other type)
+                  } catch (error) {
+                    return url;
+                  }
+                };
     return (
         <>
             {location?.pathname !== "/" && <Navbar />}
@@ -29,7 +47,7 @@ function NewsDetails() {
                                                 <img src={data?.url} className='img-thumbnail w-100' /> :
                                                 <iframe
                                                     className='video_div_detail w-100'
-                                                    src={data?.url}
+                                                    src={getEmbedUrl(data?.url)}
                                                     title="YouTube video player"
                                                     frameBorder={0}
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

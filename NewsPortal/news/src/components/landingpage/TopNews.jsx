@@ -3,7 +3,7 @@ import React from 'react'
 const TopNews = () => {
   return (
     <>
-    <div className='row py-2'>
+    <div className='row py-2' style={{    backgroundColor: "#f8f9fa"}}>
       <p className='fs-3 text-center '>Top <b className='text-mycolor'>News</b></p>
       <div className='col-sm-10 mx-auto'>
         <div className='row py-3'>
